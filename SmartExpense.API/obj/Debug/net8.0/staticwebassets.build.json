@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "tzdehawU6tpMY4SqzXZ1zdGOIkxLpsLmUBffsfq3yAk=",
+  "Source": "SmartExpense.API",
+  "BasePath": "_content/SmartExpense.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
