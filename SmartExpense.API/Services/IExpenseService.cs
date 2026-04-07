@@ -9,5 +9,7 @@ namespace SmartExpense.API.Services
         Task<int> AddExpense(ExpenseDto dto);
 
         Task<Expense?> GetExpenseById(int id);
+
+        Task<bool> DeleteExpense(int id);
     }
 }

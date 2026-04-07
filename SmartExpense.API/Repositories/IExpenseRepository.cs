@@ -9,7 +9,7 @@ namespace SmartExpense.API.Repositories
 
         Task<Expense?> GetByIdAsync(int id);
 
-        Task<int> DeleteByIdAsync(int id);
+        Task<bool> DeleteByIdAsync(int id);
 
     }
 }

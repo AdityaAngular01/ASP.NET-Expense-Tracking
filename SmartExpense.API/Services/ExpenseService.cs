@@ -43,6 +43,11 @@ namespace SmartExpense.API.Services
             return await _repo.GetByIdAsync(id);
         }
 
+        public async Task<bool> DeleteExpense(int id)
+        {
+            return await _repo.DeleteByIdAsync(id);
+        }
+
         
     }
 }

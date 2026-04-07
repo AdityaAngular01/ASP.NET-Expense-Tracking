@@ -29,9 +29,17 @@ namespace SmartExpense.API.Repositories
             return await _context.Expenses.FindAsync(id);
         }
 
-        public Task<int> DeleteByIdAsync(int id)
+        public async Task<bool> DeleteByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var expense = await _context.Expenses.FindAsync(id);
+
+            if (expense == null)
+                return false;
+
+            _context.Expenses.Remove(expense);
+            await _context.SaveChangesAsync();
+
+            return true;
         }
     }
 }
