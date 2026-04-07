@@ -28,5 +28,10 @@ namespace SmartExpense.API.Repositories
         {
             return await _context.Expenses.FindAsync(id);
         }
+
+        public Task<int> DeleteByIdAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
