@@ -148,3 +148,4 @@
 /home/am-pc-16/Aditya/ASP_NET_PROJECTS/SmartExpenseApp/SmartExpenseApp/SmartExpense.API/bin/Debug/net8.0/DotNetEnv.dll
 /home/am-pc-16/Aditya/ASP_NET_PROJECTS/SmartExpenseApp/SmartExpenseApp/SmartExpense.API/bin/Debug/net8.0/Sprache.dll
 /home/am-pc-16/Aditya/ASP_NET_PROJECTS/SmartExpenseApp/SmartExpenseApp/SmartExpense.API/bin/Debug/net8.0/appsettings.Production.json
+/home/am-pc-16/Aditya/ASP_NET_PROJECTS/SmartExpenseApp/SmartExpenseApp/SmartExpense.API/obj/Debug/net8.0/SmartExpense.API.sourcelink.json

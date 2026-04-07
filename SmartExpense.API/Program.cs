@@ -1,9 +1,9 @@
-using Microsoft.EntityFrameworkCore;
-using SmartExpense.API.Data;
-using SmartExpense.API.Repositories;
-using SmartExpense.API.Services;
-using FluentValidation;
-using FluentValidation.AspNetCore;
+// using Microsoft.EntityFrameworkCore;
+// using SmartExpense.API.Data;
+// using SmartExpense.API.Repositories;
+// using SmartExpense.API.Services;
+// using FluentValidation;
+// using FluentValidation.AspNetCore;
 using DotNetEnv;
 
 // Load .env (only if present)
@@ -84,6 +84,10 @@ app.Run();
 
 */
 
+
+
+// Clean code
+/*
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Configuration.AddEnvironmentVariables();
@@ -98,6 +102,29 @@ builder.Services
 var app = builder.Build();
 
 app.UseAppMiddlewares();
+
+app.MapControllers();
+
+app.Run();
+*/
+
+// Super Clean code with extension methods and minimal APIs
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Configuration.AddEnvironmentVariables();
+
+// Layered setup
+builder.Services
+    .AddDatabase(builder.Configuration)     // Infrastructure
+    .AddInfrastructure()                    // Infrastructure
+    .AddApplication()                       // Application
+    .AddPresentation();                     // Presentation
+
+var app = builder.Build();
+
+// Middleware pipeline
+app.UsePresentation();
 
 app.MapControllers();
 
