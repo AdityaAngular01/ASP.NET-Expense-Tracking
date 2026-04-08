@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using SmartExpense.API.Data;
+using SmartExpense.API.DTOs;
+using SmartExpense.API.DTOs.Responses;
 using SmartExpense.API.Models;
 
 namespace SmartExpense.API.Repositories
@@ -16,6 +18,11 @@ namespace SmartExpense.API.Repositories
         public async Task<IEnumerable<Expense>> GetAllAsync()
         {
             return await _context.Expenses.ToListAsync();
+        }
+
+        public async Task<PaginationDataDTO<Expense>> GetAllAsync(QueryParams queryParams)
+        {
+            return await _context.Expenses.Select(e => e).ToPagedResultAsync(queryParams);
         }
 
         public async Task AddAsync(Expense expense)
@@ -40,6 +47,14 @@ namespace SmartExpense.API.Repositories
             await _context.SaveChangesAsync();
 
             return true;
+        }
+
+        public async Task<Expense?> UpdateAsync(Expense expense)
+        {
+            _context.Expenses.Update(expense);
+            await _context.SaveChangesAsync();
+
+            return expense;
         }
     }
 }
