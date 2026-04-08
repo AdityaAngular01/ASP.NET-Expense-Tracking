@@ -1,12 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
 using SmartExpense.API.DTOs;
+using SmartExpense.API.DTOs.ExpenseDTOs;
 using SmartExpense.API.DTOs.Responses;
 using SmartExpense.API.Models;
 using SmartExpense.API.Services;
 
 namespace SmartExpense.API.Controllers
 {
-    public class ExpenseController : BaseController
+    public sealed class ExpenseController : BaseController
     {
         private readonly IExpenseService _service;
 
@@ -25,6 +26,14 @@ namespace SmartExpense.API.Controllers
                                         message: "Expenses retrieved successfully", 
                                         statusCode: StatusCodes.Status200OK
                                     ));
+        }
+
+        [HttpGet("paginated")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetPaginated([FromQuery] QueryParams queryParams)
+        {
+            var (Data, Metadata) = await _service.GetAllExpenses(queryParams);
+            return Ok(PaginationResponseHelper.Success(data: Data, metadata: Metadata));
         }
 
         [HttpGet("{id}")]
@@ -54,7 +63,7 @@ namespace SmartExpense.API.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ProblemDetails))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Post([FromBody] ExpenseDto dto)
+        public async Task<IActionResult> Post([FromBody] ExpenseDTO dto)
         {
             var expenseId = await _service.AddExpense(dto);
 
@@ -78,12 +87,35 @@ namespace SmartExpense.API.Controllers
             if (!deleted)
                 return NotFound(new ErrorResponse
                 {
-                    Message = $"Expense not found",
+                    Message = "Expense not found",
                     StatusCode = StatusCodes.Status404NotFound,
                     Details = $"No expense with id {id} exists"
                 });
 
             return NoContent();
+        }
+
+
+        [HttpPut("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> Update(int id, [FromBody] ExpenseUpdateDTO dto)
+        {
+            var (oldExpense, updatedExpense) = await _service.UpdateExpense(id, dto);
+
+            if (updatedExpense == null)
+                return NotFound(new ErrorResponse
+                {
+                    Message = "Expense not found",
+                    StatusCode = StatusCodes.Status404NotFound,
+                    Details = $"No expense with id {id} exists"
+                });
+
+            return Ok(new ExpenseUpdateResponseDTO
+            {
+                OldExpense = oldExpense,
+                UpdatedToExpense = updatedExpense
+            });
         }
     }
 }
