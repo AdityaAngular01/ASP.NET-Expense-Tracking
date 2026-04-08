@@ -1,3 +1,5 @@
+using SmartExpense.API.DTOs;
+using SmartExpense.API.DTOs.Responses;
 using SmartExpense.API.Models;
 
 namespace SmartExpense.API.Repositories
@@ -9,7 +11,11 @@ namespace SmartExpense.API.Repositories
 
         Task<Expense?> GetByIdAsync(int id);
 
+        Task<PaginationDataDTO<Expense>> GetAllAsync(QueryParams queryParams);
+
         Task<bool> DeleteByIdAsync(int id);
+
+        Task<Expense?> UpdateAsync(Expense expense);
 
     }
 }

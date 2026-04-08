@@ -1,4 +1,7 @@
+using AutoMapper;
 using SmartExpense.API.DTOs;
+using SmartExpense.API.DTOs.ExpenseDTOs;
+using SmartExpense.API.DTOs.Responses;
 using SmartExpense.API.Models;
 using SmartExpense.API.Repositories;
 
@@ -8,9 +11,12 @@ namespace SmartExpense.API.Services
     {
         private readonly IExpenseRepository _repo;
 
-        public ExpenseService(IExpenseRepository repo)
+        private readonly IMapper _mapper;
+
+        public ExpenseService(IExpenseRepository repo, IMapper mapper)
         {
             _repo = repo;
+            _mapper = mapper;
         }
 
         public async Task<IEnumerable<object>> GetAllExpenses()
@@ -24,7 +30,12 @@ namespace SmartExpense.API.Services
             });
         }
 
-        public async Task<int> AddExpense(ExpenseDto dto)
+        public async Task<PaginationDataDTO<Expense>> GetAllExpenses(QueryParams queryParams)
+        {
+            return await _repo.GetAllAsync(queryParams);
+        }
+
+        public async Task<int> AddExpense(ExpenseDTO dto)
         {
             var expense = new Expense
             {
@@ -48,6 +59,30 @@ namespace SmartExpense.API.Services
             return await _repo.DeleteByIdAsync(id);
         }
 
-        
+        public async Task<(Expense?, Expense?)> UpdateExpense(int id, ExpenseUpdateDTO dto)
+        {
+            var expense = await _repo.GetByIdAsync(id);
+            
+            var oldExpense = _mapper.Map<Expense>(expense);
+
+            // var oldExpense = await _repo.GetByIdAsync(id);
+
+            if (expense == null)
+                return (null, null);
+
+            if (!string.IsNullOrWhiteSpace(dto.Title))
+                expense.Title = dto.Title;
+
+            if (dto.Amount.HasValue)
+                expense.Amount = dto.Amount.Value;
+
+            if (dto.CategoryId.HasValue)
+                expense.CategoryId = dto.CategoryId;
+
+            if (dto.GroupId.HasValue)
+                expense.GroupId = dto.GroupId;
+
+            return (oldExpense, await _repo.UpdateAsync(expense));
+        }
     }
 }

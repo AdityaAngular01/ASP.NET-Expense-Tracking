@@ -1,9 +1,9 @@
 using FluentValidation;
-using SmartExpense.API.DTOs;
+using SmartExpense.API.DTOs.ExpenseDTOs;
 
 namespace SmartExpense.API.Validators
 {
-    public class ExpenseValidator : AbstractValidator<ExpenseDto>
+    public class ExpenseValidator : AbstractValidator<ExpenseDTO>
     {
         public ExpenseValidator()
         {
