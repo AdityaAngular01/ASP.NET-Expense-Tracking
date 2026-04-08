@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "/DnBVlYP1pZIAICalxlCwO9jE1fgGExJ6J43iyaaTc4GXjp4RB0saRRvSpWQWT/TkLQVx4MSHhTqbg68/7fl5w==",
+  "dgSpecHash": "Brbqhufw5fkE5A2yeEiXtIfQGwPfGw2/k8rdEBci+pbvZ8gmsCD6fp6gStPIF6DHUrdXdU9r9hjloQrHmwZSTQ==",
   "success": true,
   "projectFilePath": "/home/am-pc-16/Aditya/ASP_NET_PROJECTS/SmartExpenseApp/SmartExpenseApp/SmartExpense.API/SmartExpense.API.csproj",
   "expectedPackageFiles": [
+    "/home/am-pc-16/.nuget/packages/automapper/13.0.1/automapper.13.0.1.nupkg.sha512",
     "/home/am-pc-16/.nuget/packages/azure.core/1.38.0/azure.core.1.38.0.nupkg.sha512",
     "/home/am-pc-16/.nuget/packages/azure.identity/1.11.4/azure.identity.1.11.4.nupkg.sha512",
     "/home/am-pc-16/.nuget/packages/dotnetenv/3.1.1/dotnetenv.3.1.1.nupkg.sha512",
@@ -160,5 +161,16 @@
     "/home/am-pc-16/.nuget/packages/system.xml.readerwriter/4.3.0/system.xml.readerwriter.4.3.0.nupkg.sha512",
     "/home/am-pc-16/.nuget/packages/system.xml.xdocument/4.3.0/system.xml.xdocument.4.3.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'AutoMapper' 13.0.1 has a known high severity vulnerability, https://github.com/advisories/GHSA-rvv3-g6hj-g44x",
+      "libraryId": "AutoMapper",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    }
+  ]
 }
