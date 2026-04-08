@@ -11,10 +11,4 @@ namespace SmartExpense.API.DTOs
 
         public int? GroupId { get; set; }
     }
-
-    public class CreateExpenseResponse
-    {
-        public string Message { get; set; }
-        public int Id { get; set; }
-    }
 }
