@@ -5,8 +5,11 @@ public static class ApplicationExtensions
     public static IServiceCollection AddApplication(
         this IServiceCollection services)
     {
-        // Services (Business Logic)
+        // Business Services
         services.AddScoped<IExpenseService, ExpenseService>();
+
+        // AutoMapper (scan entire Application layer)
+        services.AddAutoMapper(typeof(ApplicationExtensions).Assembly);
 
         return services;
     }
