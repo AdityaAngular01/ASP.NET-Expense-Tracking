@@ -1,13 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
 using SmartExpense.API.DTOs;
+using SmartExpense.API.DTOs.Responses;
+using SmartExpense.API.Models;
 using SmartExpense.API.Services;
-using Microsoft.AspNetCore.Http;
 
 namespace SmartExpense.API.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class ExpenseController : ControllerBase
+    public class ExpenseController : BaseController
     {
         private readonly IExpenseService _service;
 
@@ -17,21 +16,37 @@ namespace SmartExpense.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get()
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetAll()
         {
             var data = await _service.GetAllExpenses();
-            return Ok(data);
+            return Ok(SuccessResponseHelper.Success(
+                                        data: data, 
+                                        message: "Expenses retrieved successfully", 
+                                        statusCode: StatusCodes.Status200OK
+                                    ));
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int id)
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ErrorResponse))]
+        public async Task<IActionResult> Get(int id)
         {
             var expense = await _service.GetExpenseById(id);
 
             if (expense == null)
-                return NotFound();
+                return NotFound(new ErrorResponse
+                {
+                    Message = $"Expense not found",
+                    StatusCode = StatusCodes.Status404NotFound,
+                    Details = $"No expense with id {id} exists"
+                });
 
-            return Ok(expense);
+            return Ok(SuccessResponseHelper.Success<Expense>(
+                                                    data: expense, 
+                                                    message: "Expense retrieved successfully", 
+                                                    statusCode: StatusCodes.Status200OK
+                                                ));
         }
 
 
@@ -43,11 +58,14 @@ namespace SmartExpense.API.Controllers
         {
             var expenseId = await _service.AddExpense(dto);
 
-            return CreatedAtAction(nameof(GetById), new { id = expenseId }, new
-            CreateExpenseResponse{
-                Message = "Expense created successfully",
-                Id = expenseId
-            });
+            return CreatedAtAction(
+                                nameof(Get), 
+                                new { id = expenseId }, 
+                                SuccessResponseHelper.Success(
+                                    data: new { Id = expenseId }, 
+                                    message: "Expense created successfully", 
+                                    statusCode: StatusCodes.Status201Created
+                                ));
         }
 
         [HttpDelete("{id}")]
@@ -58,7 +76,12 @@ namespace SmartExpense.API.Controllers
             var deleted = await _service.DeleteExpense(id);
 
             if (!deleted)
-                return NotFound();
+                return NotFound(new ErrorResponse
+                {
+                    Message = $"Expense not found",
+                    StatusCode = StatusCodes.Status404NotFound,
+                    Details = $"No expense with id {id} exists"
+                });
 
             return NoContent();
         }
