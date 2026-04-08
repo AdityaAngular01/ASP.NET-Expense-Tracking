@@ -1,6 +1,6 @@
-namespace SmartExpense.API.DTOs
+namespace SmartExpense.API.DTOs.ExpenseDTOs
 {
-    public class ExpenseDto
+    public class ExpenseDTO
     {
         public string Title { get; set; }
 
