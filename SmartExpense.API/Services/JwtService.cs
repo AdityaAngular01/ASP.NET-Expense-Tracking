@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SmartExpense.API.Services
 {
-    public class JwtService
+    public class JwtService : IJwtService
     {
         private readonly IConfiguration _config;
 
