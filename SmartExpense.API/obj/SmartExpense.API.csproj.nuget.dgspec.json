@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/am-pc-16/Aditya/ASP_NET_PROJECTS/SmartExpenseApp/SmartExpenseApp/SmartExpense.API/SmartExpense.API.csproj": {}
+    "/home/am-pc-16/Aditya/ASP_NET_PROJECTS/Smart Expense App/SmartExpense.API/SmartExpense.API.csproj": {}
   },
   "projects": {
-    "/home/am-pc-16/Aditya/ASP_NET_PROJECTS/SmartExpenseApp/SmartExpenseApp/SmartExpense.API/SmartExpense.API.csproj": {
+    "/home/am-pc-16/Aditya/ASP_NET_PROJECTS/Smart Expense App/SmartExpense.API/SmartExpense.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/am-pc-16/Aditya/ASP_NET_PROJECTS/SmartExpenseApp/SmartExpenseApp/SmartExpense.API/SmartExpense.API.csproj",
+        "projectUniqueName": "/home/am-pc-16/Aditya/ASP_NET_PROJECTS/Smart Expense App/SmartExpense.API/SmartExpense.API.csproj",
         "projectName": "SmartExpense.API",
-        "projectPath": "/home/am-pc-16/Aditya/ASP_NET_PROJECTS/SmartExpenseApp/SmartExpenseApp/SmartExpense.API/SmartExpense.API.csproj",
+        "projectPath": "/home/am-pc-16/Aditya/ASP_NET_PROJECTS/Smart Expense App/SmartExpense.API/SmartExpense.API.csproj",
         "packagesPath": "/home/am-pc-16/.nuget/packages/",
-        "outputPath": "/home/am-pc-16/Aditya/ASP_NET_PROJECTS/SmartExpenseApp/SmartExpenseApp/SmartExpense.API/obj/",
+        "outputPath": "/home/am-pc-16/Aditya/ASP_NET_PROJECTS/Smart Expense App/SmartExpense.API/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/am-pc-16/.nuget/NuGet/NuGet.Config"
@@ -42,6 +42,10 @@
               "target": "Package",
               "version": "[13.0.1, )"
             },
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.1.0, )"
+            },
             "DotNetEnv": {
               "target": "Package",
               "version": "[3.1.1, )"
@@ -49,6 +53,10 @@
             "FluentValidation.AspNetCore": {
               "target": "Package",
               "version": "[11.3.1, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.0, )"
             },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
@@ -68,9 +76,17 @@
               "target": "Package",
               "version": "[8.*, )"
             },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.6.2, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[8.17.0, )"
             }
           },
           "imports": [
