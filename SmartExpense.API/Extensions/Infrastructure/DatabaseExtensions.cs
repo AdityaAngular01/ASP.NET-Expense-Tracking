@@ -14,8 +14,11 @@ public static class DatabaseExtensions
         if (string.IsNullOrWhiteSpace(connectionString))
             throw new InvalidOperationException("Database connection string is not configured.");
 
+        // services.AddDbContext<AppDbContext>(options =>
+        //     options.UseSqlServer(connectionString));
+
         services.AddDbContext<AppDbContext>(options =>
-            options.UseSqlServer(connectionString));
+            options.UseSqlite(connectionString));
 
         return services;
     }
