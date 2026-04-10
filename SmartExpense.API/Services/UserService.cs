@@ -75,5 +75,10 @@ namespace SmartExpense.API.Services
             
             return (oldUserData, await _repo.UpdateAsync(user));
         }
+
+        public async Task<User?> GetUserByEmail(string email)
+        {
+            return await _repo.GetUserByEmailAsync(email);
+        }
     }
 }

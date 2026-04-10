@@ -19,5 +19,7 @@ namespace SmartExpense.API.Repositories
         Task<bool> DeleteByIdAsync(User user);
         
         Task<User?> UpdateAsync(User user);
+
+        Task<User?> GetUserByEmailAsync(string email);
     }
 }
