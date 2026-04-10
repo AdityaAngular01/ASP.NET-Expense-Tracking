@@ -7,6 +7,7 @@ public static class ApplicationExtensions
     {
         // Business Services
         services.AddScoped<IExpenseService, ExpenseService>();
+        services.AddScoped<IUserService, UserService>();
 
         // AutoMapper (scan entire Application layer)
         services.AddAutoMapper(typeof(ApplicationExtensions).Assembly);

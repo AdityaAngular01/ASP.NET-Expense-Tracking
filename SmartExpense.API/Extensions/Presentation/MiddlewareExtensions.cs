@@ -8,6 +8,8 @@ public static class MiddlewareExtensions
 
         app.UseRouting();
 
+        app.UseAuthentication();
+        
         app.UseAuthorization();
 
         return app;

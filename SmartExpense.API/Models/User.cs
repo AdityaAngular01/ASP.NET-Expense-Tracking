@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace SmartExpense.API.Models
 {
     public class User
@@ -7,6 +9,7 @@ namespace SmartExpense.API.Models
         public string Email { get; set; }
 
         // For authentication later
+        [JsonIgnore]
         public string PasswordHash { get; set; }
 
         // Navigation

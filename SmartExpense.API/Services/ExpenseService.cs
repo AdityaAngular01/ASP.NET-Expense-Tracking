@@ -65,8 +65,6 @@ namespace SmartExpense.API.Services
             
             var oldExpense = _mapper.Map<Expense>(expense);
 
-            // var oldExpense = await _repo.GetByIdAsync(id);
-
             if (expense == null)
                 return (null, null);
 
