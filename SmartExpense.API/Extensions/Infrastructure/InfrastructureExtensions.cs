@@ -7,6 +7,7 @@ public static class InfrastructureExtensions
     {
         // Repositories
         services.AddScoped<IExpenseRepository, ExpenseRepository>();
+        services.AddScoped<IUserRepository, UserRepository>();
 
         return services;
     }
