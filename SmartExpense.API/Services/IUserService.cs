@@ -18,5 +18,7 @@ namespace SmartExpense.API.Services
         Task<bool> DeleteUser(int id);
 
         Task<(User?, User?)> UpdateUser(int id, UserUpdateDTO dto);
+
+        Task<User?> GetUserByEmail(string email);
     }
 }
