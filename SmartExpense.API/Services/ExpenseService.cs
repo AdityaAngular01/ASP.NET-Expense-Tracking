@@ -13,10 +13,13 @@ namespace SmartExpense.API.Services
 
         private readonly IMapper _mapper;
 
-        public ExpenseService(IExpenseRepository repo, IMapper mapper)
+        private readonly ICurrentUserService _currentUser;
+
+        public ExpenseService(IExpenseRepository repo, IMapper mapper, ICurrentUserService currentUser)
         {
             _repo = repo;
             _mapper = mapper;
+            _currentUser = currentUser;
         }
 
         public async Task<IEnumerable<object>> GetAllExpenses()
@@ -41,7 +44,7 @@ namespace SmartExpense.API.Services
             {
                 Title = dto.Title,
                 Amount = dto.Amount,
-                UserId = 1 //
+                UserId = _currentUser.UserId,
             };
 
             await _repo.AddAsync(expense);
