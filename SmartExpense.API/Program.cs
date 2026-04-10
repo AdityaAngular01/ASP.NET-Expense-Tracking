@@ -117,6 +117,7 @@ builder.Configuration.AddEnvironmentVariables();
 // Layered setup
 builder.Services
     .AddDatabase(builder.Configuration)     // Infrastructure
+    .AddJwtAuth(builder.Configuration)      // Infrastructure
     .AddInfrastructure()                    // Infrastructure
     .AddApplication()                       // Application
     .AddPresentation();                     // Presentation

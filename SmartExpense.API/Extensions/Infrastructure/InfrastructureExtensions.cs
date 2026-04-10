@@ -1,4 +1,5 @@
 using SmartExpense.API.Repositories;
+using SmartExpense.API.Repositories.Auth;
 
 public static class InfrastructureExtensions
 {
@@ -8,6 +9,7 @@ public static class InfrastructureExtensions
         // Repositories
         services.AddScoped<IExpenseRepository, ExpenseRepository>();
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IAuthRepository, AuthRepository>();
 
         return services;
     }
