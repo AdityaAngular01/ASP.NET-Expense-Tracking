@@ -1,6 +1,7 @@
 using SmartExpense.API.DTOs.AuthDTOs;
 using SmartExpense.API.Models;
 using SmartExpense.API.Repositories.Auth;
+using BCrypt.Net;
 
 namespace SmartExpense.API.Services.Auth
 {
@@ -24,7 +25,10 @@ namespace SmartExpense.API.Services.Auth
 
             var (Id, Email, Password) = user.Value;
 
-            if (user == null || Password != authLoginDTO.Password)
+            if (user == null)
+                return null;
+            
+            if (!BCrypt.Net.BCrypt.Verify(text: authLoginDTO.Password, hash: Password))
                 return null;
 
             return new
@@ -37,7 +41,17 @@ namespace SmartExpense.API.Services.Auth
 
         public async Task<object> Register(AuthRegisterDTO authRegisterDTO)
         {
-            throw new NotImplementedException();
+            Console.WriteLine($"Received registration request for email: {authRegisterDTO.Email}, name: {authRegisterDTO.Name} {authRegisterDTO.Password} {authRegisterDTO.ConfirmPassword}");
+            var newUser = new User
+            {
+                Email = authRegisterDTO.Email,
+                PasswordHash = BCrypt.Net.BCrypt.HashPassword(authRegisterDTO.Password),
+                Name = authRegisterDTO.Name
+            };
+
+            await _authRepository.RegisterAsync(newUser);
+            
+            return newUser.Id;
         }
     }
 }
