@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/am-pc-16/Aditya/ASP_NET_PROJECTS/Smart Expense App/SmartExpense.API/SmartExpense.API.csproj": {}
+    "/Users/adityakalambe/Downloads/ASP NET Projects/Expense Tracking/SmartExpense.API/SmartExpense.API.csproj": {}
   },
   "projects": {
-    "/home/am-pc-16/Aditya/ASP_NET_PROJECTS/Smart Expense App/SmartExpense.API/SmartExpense.API.csproj": {
+    "/Users/adityakalambe/Downloads/ASP NET Projects/Expense Tracking/SmartExpense.API/SmartExpense.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/am-pc-16/Aditya/ASP_NET_PROJECTS/Smart Expense App/SmartExpense.API/SmartExpense.API.csproj",
+        "projectUniqueName": "/Users/adityakalambe/Downloads/ASP NET Projects/Expense Tracking/SmartExpense.API/SmartExpense.API.csproj",
         "projectName": "SmartExpense.API",
-        "projectPath": "/home/am-pc-16/Aditya/ASP_NET_PROJECTS/Smart Expense App/SmartExpense.API/SmartExpense.API.csproj",
-        "packagesPath": "/home/am-pc-16/.nuget/packages/",
-        "outputPath": "/home/am-pc-16/Aditya/ASP_NET_PROJECTS/Smart Expense App/SmartExpense.API/obj/",
+        "projectPath": "/Users/adityakalambe/Downloads/ASP NET Projects/Expense Tracking/SmartExpense.API/SmartExpense.API.csproj",
+        "packagesPath": "/Users/adityakalambe/.nuget/packages/",
+        "outputPath": "/Users/adityakalambe/Downloads/ASP NET Projects/Expense Tracking/SmartExpense.API/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/am-pc-16/.nuget/NuGet/NuGet.Config"
+          "/Users/adityakalambe/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -108,7 +108,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.125/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/opt/homebrew/Cellar/dotnet@8/8.0.125/libexec/sdk/8.0.125/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

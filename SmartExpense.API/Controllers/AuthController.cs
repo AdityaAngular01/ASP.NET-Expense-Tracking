@@ -27,7 +27,7 @@ namespace SmartExpense.API.Controllers.Auth
         {
 
             var userId = await _authService.Register(dto);
-            return CreatedAtAction(nameof(_userService.GetUserById), new { id = userId }, SuccessResponseHelper.Success(
+            return Ok(SuccessResponseHelper.Success(
                                         data: new { Id = userId }, 
                                         message: "User created successfully", 
                                         statusCode: StatusCodes.Status201Created
