@@ -9180,19 +9180,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/adityakalambe/.nuget/packages/": {}
+    "/home/am-pc-16/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/adityakalambe/Downloads/ASP NET Projects/Expense Tracking/SmartExpense.API/SmartExpense.API.csproj",
+      "projectUniqueName": "/home/am-pc-16/Aditya/ASP_NET_PROJECTS/Smart Expense/SmartExpense.API/SmartExpense.API.csproj",
       "projectName": "SmartExpense.API",
-      "projectPath": "/Users/adityakalambe/Downloads/ASP NET Projects/Expense Tracking/SmartExpense.API/SmartExpense.API.csproj",
-      "packagesPath": "/Users/adityakalambe/.nuget/packages/",
-      "outputPath": "/Users/adityakalambe/Downloads/ASP NET Projects/Expense Tracking/SmartExpense.API/obj/",
+      "projectPath": "/home/am-pc-16/Aditya/ASP_NET_PROJECTS/Smart Expense/SmartExpense.API/SmartExpense.API.csproj",
+      "packagesPath": "/home/am-pc-16/.nuget/packages/",
+      "outputPath": "/home/am-pc-16/Aditya/ASP_NET_PROJECTS/Smart Expense/SmartExpense.API/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/adityakalambe/.nuget/NuGet/NuGet.Config"
+        "/home/am-pc-16/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -9286,7 +9286,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/opt/homebrew/Cellar/dotnet@8/8.0.125/libexec/sdk/8.0.125/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.125/PortableRuntimeIdentifierGraph.json"
       }
     }
   },
