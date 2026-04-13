@@ -12,6 +12,7 @@ public static class ApplicationExtensions
         services.AddScoped<IAuthService, AuthService>();
         services.AddScoped<ICategoryService, CategoryService>();
         services.AddScoped<IGroupService, GroupService>();
+        services.AddScoped<IGroupMemberService, GroupMemberService>();
 
         // JWT Service
         services.AddScoped<IJwtService, JwtService>();
