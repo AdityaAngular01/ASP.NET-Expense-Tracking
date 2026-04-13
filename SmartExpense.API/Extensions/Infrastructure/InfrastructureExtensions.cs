@@ -10,6 +10,8 @@ public static class InfrastructureExtensions
         services.AddScoped<IExpenseRepository, ExpenseRepository>();
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IAuthRepository, AuthRepository>();
+        services.AddScoped<ICategoryRepository, CategoryRepository>();
+        services.AddScoped<IGroupRepository, GroupRepository>();
         services.AddScoped<IGroupMemberRepository, GroupMemberRepository>();
 
         return services;
