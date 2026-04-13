@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SmartExpense.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+61b05ccfabaf51e3cd76d92264fe7e60eda2665e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b2e84852089f3f75c14a40cdd703a17aaab78527")]
 [assembly: System.Reflection.AssemblyProductAttribute("SmartExpense.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SmartExpense.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
