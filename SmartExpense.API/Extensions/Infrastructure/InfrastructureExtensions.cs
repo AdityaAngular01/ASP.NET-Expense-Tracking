@@ -11,6 +11,7 @@ public static class InfrastructureExtensions
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IAuthRepository, AuthRepository>();
         services.AddScoped<ICategoryRepository, CategoryRepository>();
+        services.AddScoped<IGroupRepository, GroupRepository>();
 
         return services;
     }
