@@ -10,7 +10,7 @@ import {
   ValidatorFn,
 } from '@angular/forms';
 import { confirmPasswordValidator, passwordStrengthValidator } from './password.validators';
-import { ErrorMessage } from '../../shared/error-message/error-message';
+import { ErrorMessage } from '../../../shared/error-message/error-message';
 
 @Component({
   selector: 'app-auth',
