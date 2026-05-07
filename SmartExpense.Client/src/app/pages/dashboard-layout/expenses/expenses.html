@@ -1,0 +1,367 @@
+<div class="min-h-screen bg-black text-white">
+
+  <!-- HEADER -->
+  <header
+    class="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-6 p-8 border-b border-gray-800">
+
+    <div>
+      <h1 class="text-5xl font-bold">
+        Expense Management
+      </h1>
+
+      <p class="text-gray-400 mt-3 text-lg">
+        Track, manage and analyze all your expenses
+      </p>
+    </div>
+
+    <div class="flex gap-4">
+
+      <button
+        class="bg-gray-900 hover:bg-gray-800 border border-gray-800 px-6 py-3 rounded-2xl transition">
+
+        Export CSV
+      </button>
+
+      <button
+        class="bg-green-500 hover:bg-green-600 px-6 py-3 rounded-2xl font-semibold transition">
+
+        + Add Expense
+      </button>
+
+    </div>
+
+  </header>
+
+  <!-- CONTENT -->
+  <div class="p-8 space-y-10">
+
+    <!-- STATS -->
+    <section class="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+
+      <!-- CARD -->
+      <div
+        class="bg-gradient-to-br from-green-500 to-emerald-600 rounded-3xl p-6">
+
+        <p class="text-white/80">
+          Total Expenses
+        </p>
+
+        <h2 class="text-5xl font-bold mt-4">
+          ₹48K
+        </h2>
+
+        <p class="mt-4 text-white/90">
+          +12% from last month
+        </p>
+
+      </div>
+
+      <!-- CARD -->
+      <div
+        class="bg-gray-900 border border-gray-800 rounded-3xl p-6">
+
+        <p class="text-gray-400">
+          Pending Payments
+        </p>
+
+        <h2 class="text-5xl font-bold mt-4">
+          ₹7.8K
+        </h2>
+
+        <p class="mt-4 text-yellow-400">
+          12 unsettled splits
+        </p>
+
+      </div>
+
+      <!-- CARD -->
+      <div
+        class="bg-gray-900 border border-gray-800 rounded-3xl p-6">
+
+        <p class="text-gray-400">
+          Active Groups
+        </p>
+
+        <h2 class="text-5xl font-bold mt-4">
+          8
+        </h2>
+
+        <p class="mt-4 text-blue-400">
+          Shared expense groups
+        </p>
+
+      </div>
+
+      <!-- CARD -->
+      <div
+        class="bg-gray-900 border border-gray-800 rounded-3xl p-6">
+
+        <p class="text-gray-400">
+          Categories
+        </p>
+
+        <h2 class="text-5xl font-bold mt-4">
+          14
+        </h2>
+
+        <p class="mt-4 text-purple-400">
+          Expense categories
+        </p>
+
+      </div>
+
+    </section>
+
+    <!-- FILTERS -->
+    <section
+      class="bg-gray-900 border border-gray-800 rounded-3xl p-6">
+
+      <div class="grid lg:grid-cols-5 gap-5">
+
+        <!-- Search -->
+        <input
+          type="text"
+          placeholder="Search expenses..."
+          class="bg-black border border-gray-700 rounded-2xl px-5 py-4 outline-none focus:border-green-500">
+
+        <!-- Category -->
+        <select
+          class="bg-black border border-gray-700 rounded-2xl px-5 py-4 outline-none">
+
+          <option>All Categories</option>
+          <option>Food</option>
+          <option>Travel</option>
+          <option>Transport</option>
+          <option>Entertainment</option>
+
+        </select>
+
+        <!-- Group -->
+        <select
+          class="bg-black border border-gray-700 rounded-2xl px-5 py-4 outline-none">
+
+          <option>All Groups</option>
+          <option>Friends Group</option>
+          <option>Office</option>
+          <option>Goa Trip</option>
+
+        </select>
+
+        <!-- Status -->
+        <select
+          class="bg-black border border-gray-700 rounded-2xl px-5 py-4 outline-none">
+
+          <option>All Status</option>
+          <option>Paid</option>
+          <option>Pending</option>
+          <option>Settled</option>
+
+        </select>
+
+        <!-- Filter Button -->
+        <button
+          class="bg-green-500 hover:bg-green-600 rounded-2xl font-semibold transition">
+
+          Apply Filters
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- TABLE -->
+    <section
+      class="bg-gray-900 border border-gray-800 rounded-3xl overflow-hidden">
+
+      <!-- TABLE HEADER -->
+      <div
+        class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5 p-8 border-b border-gray-800">
+
+        <div>
+          <h2 class="text-3xl font-bold">
+            Expense Records
+          </h2>
+
+          <p class="text-gray-400 mt-2">
+            Detailed overview of all transactions
+          </p>
+        </div>
+
+        <button
+          class="bg-gray-800 hover:bg-gray-700 px-5 py-3 rounded-2xl transition">
+
+          Download Report
+        </button>
+
+      </div>
+
+      <!-- TABLE -->
+      <div class="overflow-x-auto">
+
+        <table class="w-full min-w-[1100px]">
+
+          <thead class="bg-black/30">
+
+          <tr class="text-left border-b border-gray-800">
+
+            <th class="px-8 py-5">Expense</th>
+            <th class="px-8 py-5">Category</th>
+            <th class="px-8 py-5">Group</th>
+            <th class="px-8 py-5">Paid By</th>
+            <th class="px-8 py-5">Date</th>
+            <th class="px-8 py-5">Amount</th>
+            <th class="px-8 py-5">Status</th>
+            <th class="px-8 py-5">Actions</th>
+
+          </tr>
+
+          </thead>
+
+          <tbody class="divide-y divide-gray-800">
+
+          <tr
+            *ngFor="let expense of expenses"
+            class="hover:bg-gray-800/40 transition">
+
+            <!-- Expense -->
+            <td class="px-8 py-6">
+
+              <div>
+                <h3 class="font-semibold text-lg">
+                  {{ expense.title }}
+                </h3>
+
+                <p class="text-gray-400 text-sm mt-1">
+                  Expense ID: #EXP-{{ expense.id }}
+                </p>
+              </div>
+
+            </td>
+
+            <!-- Category -->
+            <td class="px-8 py-6">
+
+                                <span
+                                  class="bg-purple-500/20 text-purple-400 px-4 py-2 rounded-full text-sm">
+
+                                    {{ expense.category }}
+                                </span>
+
+            </td>
+
+            <!-- Group -->
+            <td class="px-8 py-6 text-gray-300">
+              {{ expense.group }}
+            </td>
+
+            <!-- Paid By -->
+            <td class="px-8 py-6 text-gray-300">
+              {{ expense.paidBy }}
+            </td>
+
+            <!-- Date -->
+            <td class="px-8 py-6 text-gray-400">
+              {{ expense.date }}
+            </td>
+
+            <!-- Amount -->
+            <td
+              class="px-8 py-6 text-green-400 font-bold text-lg">
+
+              ₹{{ expense.amount }}
+            </td>
+
+            <!-- Status -->
+            <td class="px-8 py-6">
+
+                                <span
+                                  [ngClass]="{
+                                        'bg-yellow-500/20 text-yellow-400': expense.status === 'Pending',
+                                        'bg-green-500/20 text-green-400': expense.status === 'Paid',
+                                        'bg-blue-500/20 text-blue-400': expense.status === 'Settled'
+                                    }"
+                                  class="px-4 py-2 rounded-full text-sm">
+
+                                    {{ expense.status }}
+                                </span>
+
+            </td>
+
+            <!-- Actions -->
+            <td class="px-8 py-6">
+
+              <div class="flex gap-3">
+
+                <button
+                  class="bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-xl transition">
+
+                  View
+                </button>
+
+                <button
+                  class="bg-green-500 hover:bg-green-600 px-4 py-2 rounded-xl transition">
+
+                  Edit
+                </button>
+
+              </div>
+
+            </td>
+
+          </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+      <!-- PAGINATION -->
+      <div
+        class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5 p-8 border-t border-gray-800">
+
+        <p class="text-gray-400">
+          Showing 1 to 5 of 50 expenses
+        </p>
+
+        <div class="flex gap-3">
+
+          <button
+            class="bg-gray-800 hover:bg-gray-700 px-5 py-3 rounded-xl">
+
+            Previous
+          </button>
+
+          <button
+            class="bg-green-500 px-5 py-3 rounded-xl font-semibold">
+
+            1
+          </button>
+
+          <button
+            class="bg-gray-800 hover:bg-gray-700 px-5 py-3 rounded-xl">
+
+            2
+          </button>
+
+          <button
+            class="bg-gray-800 hover:bg-gray-700 px-5 py-3 rounded-xl">
+
+            3
+          </button>
+
+          <button
+            class="bg-gray-800 hover:bg-gray-700 px-5 py-3 rounded-xl">
+
+            Next
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </div>
+
+</div>
