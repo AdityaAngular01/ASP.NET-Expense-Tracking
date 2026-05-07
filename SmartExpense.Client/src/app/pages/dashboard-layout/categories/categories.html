@@ -1,0 +1,459 @@
+<div class="min-h-screen bg-black text-white">
+
+  <!-- HEADER -->
+  <header
+    class="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-6 p-6 lg:p-8 border-b border-gray-800">
+
+    <div>
+
+      <h1 class="text-4xl lg:text-5xl font-bold">
+        Expense Categories
+      </h1>
+
+      <p class="text-gray-400 mt-3 text-base lg:text-lg">
+        Track spending patterns across different categories
+      </p>
+
+    </div>
+
+    <div class="flex flex-col sm:flex-row gap-4">
+
+      <button
+        class="bg-gray-900 hover:bg-gray-800 border border-gray-800 px-6 py-3 rounded-2xl transition">
+
+        Export Analytics
+      </button>
+
+      <button
+        class="bg-green-500 hover:bg-green-600 px-6 py-3 rounded-2xl font-semibold transition">
+
+        + Add Category
+      </button>
+
+    </div>
+
+  </header>
+
+  <!-- CONTENT -->
+  <div class="p-6 lg:p-8 space-y-10">
+
+    <!-- ANALYTICS -->
+    <section class="grid sm:grid-cols-2 xl:grid-cols-4 gap-6">
+
+      <!-- CARD -->
+      <div
+        class="bg-gradient-to-br from-green-500 to-emerald-600 rounded-3xl p-6">
+
+        <p class="text-white/80">
+          Total Categories
+        </p>
+
+        <h2 class="text-4xl lg:text-5xl font-bold mt-4">
+          14
+        </h2>
+
+        <p class="mt-4 text-white/90">
+          Active expense categories
+        </p>
+
+      </div>
+
+      <!-- CARD -->
+      <div
+        class="bg-gray-900 border border-gray-800 rounded-3xl p-6">
+
+        <p class="text-gray-400">
+          Monthly Spending
+        </p>
+
+        <h2 class="text-4xl lg:text-5xl font-bold mt-4">
+          ₹89K
+        </h2>
+
+        <p class="mt-4 text-blue-400">
+          Across all categories
+        </p>
+
+      </div>
+
+      <!-- CARD -->
+      <div
+        class="bg-gray-900 border border-gray-800 rounded-3xl p-6">
+
+        <p class="text-gray-400">
+          Budget Utilized
+        </p>
+
+        <h2 class="text-4xl lg:text-5xl font-bold mt-4">
+          76%
+        </h2>
+
+        <p class="mt-4 text-yellow-400">
+          Average utilization
+        </p>
+
+      </div>
+
+      <!-- CARD -->
+      <div
+        class="bg-gray-900 border border-gray-800 rounded-3xl p-6">
+
+        <p class="text-gray-400">
+          Top Category
+        </p>
+
+        <h2 class="text-3xl lg:text-4xl font-bold mt-4">
+          Travel
+        </h2>
+
+        <p class="mt-4 text-purple-400">
+          Highest spending
+        </p>
+
+      </div>
+
+    </section>
+
+    <!-- FILTERS -->
+    <section
+      class="bg-gray-900 border border-gray-800 rounded-3xl p-6">
+
+      <div class="grid lg:grid-cols-4 gap-5">
+
+        <!-- Search -->
+        <input
+          type="text"
+          placeholder="Search categories..."
+          class="bg-black border border-gray-700 rounded-2xl px-5 py-4 outline-none focus:border-green-500">
+
+        <!-- Status -->
+        <select
+          class="bg-black border border-gray-700 rounded-2xl px-5 py-4">
+
+          <option>All Status</option>
+          <option>On Track</option>
+          <option>Exceeded</option>
+          <option>Under Budget</option>
+
+        </select>
+
+        <!-- Budget -->
+        <select
+          class="bg-black border border-gray-700 rounded-2xl px-5 py-4">
+
+          <option>All Budgets</option>
+          <option>0-10K</option>
+          <option>10K-25K</option>
+          <option>25K+</option>
+
+        </select>
+
+        <!-- Filter -->
+        <button
+          class="bg-green-500 hover:bg-green-600 rounded-2xl font-semibold transition">
+
+          Apply Filters
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- CATEGORY GRID -->
+    <section class="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
+
+      <div
+        *ngFor="let category of categories"
+        class="bg-gray-900 border border-gray-800 rounded-3xl overflow-hidden hover:border-green-500/40 transition">
+
+        <!-- TOP -->
+        <div class="p-8 border-b border-gray-800">
+
+          <div
+            class="flex items-start justify-between gap-5">
+
+            <!-- LEFT -->
+            <div class="flex items-center gap-5">
+
+              <div
+                class="w-20 h-20 rounded-3xl bg-black border border-gray-800 flex items-center justify-center text-4xl">
+
+                {{ category.icon }}
+              </div>
+
+              <div>
+
+                <h2 class="text-2xl font-bold">
+                  {{ category.name }}
+                </h2>
+
+                <p class="text-gray-400 mt-2">
+                  {{ category.transactions }} Transactions
+                </p>
+
+              </div>
+
+            </div>
+
+            <!-- STATUS -->
+            <span
+              [ngClass]="{
+                                'bg-green-500/20 text-green-400': category.status === 'On Track',
+                                'bg-red-500/20 text-red-400': category.status === 'Exceeded',
+                                'bg-yellow-500/20 text-yellow-400': category.status === 'Under Budget'
+                            }"
+              class="px-4 py-2 rounded-full text-sm font-semibold">
+
+                            {{ category.status }}
+                        </span>
+
+          </div>
+
+        </div>
+
+        <!-- CONTENT -->
+        <div class="p-8">
+
+          <!-- EXPENSE -->
+          <div class="grid grid-cols-2 gap-5 mb-8">
+
+            <!-- Total -->
+            <div
+              class="bg-black border border-gray-800 rounded-2xl p-5">
+
+              <p class="text-gray-400 text-sm">
+                Spent
+              </p>
+
+              <h3
+                class="text-3xl font-bold text-green-400 mt-3">
+
+                ₹{{ category.totalExpense }}
+              </h3>
+
+            </div>
+
+            <!-- Budget -->
+            <div
+              class="bg-black border border-gray-800 rounded-2xl p-5">
+
+              <p class="text-gray-400 text-sm">
+                Budget
+              </p>
+
+              <h3
+                class="text-3xl font-bold text-blue-400 mt-3">
+
+                ₹{{ category.budget }}
+              </h3>
+
+            </div>
+
+          </div>
+
+          <!-- PROGRESS -->
+          <div class="mb-8">
+
+            <div
+              class="flex items-center justify-between mb-3">
+
+                            <span class="text-gray-400">
+                                Budget Usage
+                            </span>
+
+              <span class="font-semibold">
+                                {{ category.percentage }}%
+                            </span>
+
+            </div>
+
+            <!-- BAR -->
+            <div
+              class="w-full h-4 bg-black rounded-full overflow-hidden">
+
+              <div
+                [style.width.%]="category.percentage"
+                [ngClass]="{
+                                    'bg-green-500': category.percentage <= 80,
+                                    'bg-yellow-500': category.percentage > 80 && category.percentage <= 100,
+                                    'bg-red-500': category.percentage > 100
+                                }"
+                class="h-full rounded-full transition-all duration-500">
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- DETAILS -->
+          <div class="space-y-4 mb-8">
+
+            <div
+              class="flex items-center justify-between border-b border-gray-800 pb-4">
+
+                            <span class="text-gray-400">
+                                Monthly Change
+                            </span>
+
+              <span
+                [ngClass]="{
+                                    'text-green-400': category.monthlyChange.includes('+'),
+                                    'text-red-400': category.monthlyChange.includes('-')
+                                }"
+                class="font-semibold">
+
+                                {{ category.monthlyChange }}
+                            </span>
+
+            </div>
+
+            <div
+              class="flex items-center justify-between border-b border-gray-800 pb-4">
+
+                            <span class="text-gray-400">
+                                Recent Expense
+                            </span>
+
+              <span class="font-semibold text-right">
+                                {{ category.recentExpense }}
+                            </span>
+
+            </div>
+
+          </div>
+
+          <!-- ACTIONS -->
+          <div class="flex flex-wrap gap-4">
+
+            <button
+              class="flex-1 bg-green-500 hover:bg-green-600 py-4 rounded-2xl font-semibold transition">
+
+              View Analytics
+            </button>
+
+            <button
+              class="flex-1 bg-gray-800 hover:bg-gray-700 py-4 rounded-2xl transition">
+
+              Add Expense
+            </button>
+
+            <button
+              class="bg-black border border-gray-700 hover:border-green-500 px-6 rounded-2xl transition">
+
+              Edit
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- RECENT CATEGORY ACTIVITY -->
+    <section
+      class="bg-gray-900 border border-gray-800 rounded-3xl p-8">
+
+      <div class="mb-8">
+
+        <h2 class="text-3xl font-bold">
+          Recent Category Activities
+        </h2>
+
+        <p class="text-gray-400 mt-2">
+          Latest category spending updates
+        </p>
+
+      </div>
+
+      <div class="space-y-5">
+
+        <!-- ITEM -->
+        <div
+          class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 bg-black border border-gray-800 rounded-2xl p-5">
+
+          <div class="flex items-center gap-5">
+
+            <div
+              class="w-14 h-14 rounded-2xl bg-green-500/20 flex items-center justify-center text-2xl">
+
+              🍔
+            </div>
+
+            <div>
+
+              <h3 class="font-semibold text-lg">
+                BBQ Nation Dinner Added
+              </h3>
+
+              <p class="text-gray-400">
+                Food & Dining Category
+              </p>
+
+            </div>
+
+          </div>
+
+          <div class="text-right">
+
+            <p class="text-green-400 font-bold text-lg">
+              ₹2,400
+            </p>
+
+            <p class="text-gray-500">
+              2 hours ago
+            </p>
+
+          </div>
+
+        </div>
+
+        <!-- ITEM -->
+        <div
+          class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 bg-black border border-gray-800 rounded-2xl p-5">
+
+          <div class="flex items-center gap-5">
+
+            <div
+              class="w-14 h-14 rounded-2xl bg-blue-500/20 flex items-center justify-center text-2xl">
+
+              ✈️
+            </div>
+
+            <div>
+
+              <h3 class="font-semibold text-lg">
+                Goa Resort Booking
+              </h3>
+
+              <p class="text-gray-400">
+                Travel Category
+              </p>
+
+            </div>
+
+          </div>
+
+          <div class="text-right">
+
+            <p class="text-green-400 font-bold text-lg">
+              ₹12,500
+            </p>
+
+            <p class="text-gray-500">
+              5 hours ago
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </div>
+
+</div>

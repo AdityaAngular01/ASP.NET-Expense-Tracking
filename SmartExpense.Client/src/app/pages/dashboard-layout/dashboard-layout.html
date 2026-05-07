@@ -1,0 +1,96 @@
+<div class="min-h-screen bg-black text-white flex">
+
+  <!-- SIDEBAR -->
+  <aside
+    class="w-72 bg-gray-950 border-r border-gray-800 hidden lg:flex flex-col">
+
+    <!-- Logo -->
+    <div class="p-8 border-b border-gray-800">
+      <h1 class="text-3xl font-bold text-green-400">
+        SmartExpense
+      </h1>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="flex-1 p-6 space-y-3">
+
+      @for (sideLink of dashboardSideLinks; track sideLink.title) {
+
+        <a
+          [routerLink]="sideLink.link"
+          routerLinkActive
+          #rla="routerLinkActive"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="flex items-center gap-4 px-5 py-4 rounded-2xl text-white font-semibold transition"
+          [ngClass]="{
+            'bg-green-500 text-white': rla.isActive,
+            'hover:bg-gray-900': !rla.isActive
+          }"
+        >
+          {{ sideLink.icon }} {{ sideLink.title }}
+        </a>
+
+      }
+
+<!--      <a [routerLink]="[ '/', 'dashboard']"-->
+<!--         class="flex items-center gap-4 px-5 py-4 rounded-2xl bg-green-500 text-white font-semibold">-->
+<!--        📊 Dashboard-->
+<!--      </a>-->
+
+<!--      <a [routerLink]="[ '/', 'dashboard', 'expenses']"-->
+<!--         class="flex items-center gap-4 px-5 py-4 rounded-2xl hover:bg-gray-900 transition">-->
+<!--        💰 Expenses-->
+<!--      </a>-->
+
+<!--      <a [routerLink]="[ '/', 'dashboard', 'groups']"-->
+<!--         class="flex items-center gap-4 px-5 py-4 rounded-2xl hover:bg-gray-900 transition">-->
+<!--        👥 Groups-->
+<!--      </a>-->
+
+<!--      <a [routerLink]="[ '/', 'dashboard', 'payments']"-->
+<!--         class="flex items-center gap-4 px-5 py-4 rounded-2xl hover:bg-gray-900 transition">-->
+<!--        🧾 Payments-->
+<!--      </a>-->
+
+<!--      <a [routerLink]="[ '/', 'dashboard', 'categories']"-->
+<!--         class="flex items-center gap-4 px-5 py-4 rounded-2xl hover:bg-gray-900 transition">-->
+<!--        🏷️ Categories-->
+<!--      </a>-->
+
+<!--      <a [routerLink]="[ '/', 'dashboard', 'settings']"-->
+<!--         class="flex items-center gap-4 px-5 py-4 rounded-2xl hover:bg-gray-900 transition">-->
+<!--        ⚙️ Settings-->
+<!--      </a>-->
+
+    </nav>
+
+    <!-- User -->
+    <div class="p-6 border-t border-gray-800">
+
+      <div class="flex items-center gap-4">
+        <div
+          class="w-14 h-14 rounded-full bg-green-500 flex items-center justify-center text-xl font-bold">
+
+          A
+        </div>
+
+        <div>
+          <h3 class="font-semibold">
+            Aditya
+          </h3>
+
+          <p class="text-gray-400 text-sm">
+            {{ emailAddress }}
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="flex-1 overflow-y-auto w-full">
+    <router-outlet/>
+  </main>
+
+</div>
