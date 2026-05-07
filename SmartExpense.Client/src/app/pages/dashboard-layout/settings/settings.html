@@ -1,0 +1,843 @@
+<div class="min-h-screen bg-black text-white">
+
+  <!-- HEADER -->
+  <header
+    class="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-6 p-6 lg:p-8 border-b border-gray-800">
+
+    <div>
+
+      <h1 class="text-4xl lg:text-5xl font-bold">
+        Settings
+      </h1>
+
+      <p class="text-gray-400 mt-3 text-base lg:text-lg">
+        Manage account, application, privacy and system preferences
+      </p>
+
+    </div>
+
+    <div class="flex flex-col sm:flex-row gap-4">
+
+      <button
+        class="bg-gray-900 hover:bg-gray-800 border border-gray-800 px-6 py-3 rounded-2xl transition">
+
+        Export Settings
+      </button>
+
+      <button
+        class="bg-green-500 hover:bg-green-600 px-6 py-3 rounded-2xl font-semibold transition">
+
+        Save Changes
+      </button>
+
+    </div>
+
+  </header>
+
+  <!-- CONTENT -->
+  <div class="p-6 lg:p-8 space-y-10">
+
+    <!-- PROFILE SETTINGS -->
+    <section
+      class="bg-gray-900 border border-gray-800 rounded-3xl p-6 lg:p-8">
+
+      <div class="mb-8">
+
+        <h2 class="text-3xl font-bold">
+          Profile Settings
+        </h2>
+
+        <p class="text-gray-400 mt-2">
+          Manage your personal information
+        </p>
+
+      </div>
+
+      <div class="grid xl:grid-cols-3 gap-10">
+
+        <!-- PROFILE -->
+        <div class="flex flex-col items-center">
+
+          <div
+            class="w-40 h-40 rounded-full bg-green-500 flex items-center justify-center text-6xl font-bold mb-6">
+
+            A
+          </div>
+
+          <button
+            class="bg-gray-800 hover:bg-gray-700 px-6 py-3 rounded-2xl">
+
+            Change Photo
+          </button>
+
+        </div>
+
+        <!-- FORM -->
+        <div class="xl:col-span-2 grid md:grid-cols-2 gap-6">
+
+          <div>
+            <label class="block text-gray-400 mb-3">
+              Full Name
+            </label>
+
+            <input
+              type="text"
+              value="Aditya Kalambe"
+              class="w-full bg-black border border-gray-700 rounded-2xl px-5 py-4 outline-none focus:border-green-500">
+          </div>
+
+          <div>
+            <label class="block text-gray-400 mb-3">
+              Username
+            </label>
+
+            <input
+              type="text"
+              value="aditya"
+              class="w-full bg-black border border-gray-700 rounded-2xl px-5 py-4 outline-none focus:border-green-500">
+          </div>
+
+          <div>
+            <label class="block text-gray-400 mb-3">
+              Email Address
+            </label>
+
+            <input
+              type="email"
+              value="aditya@email.com"
+              class="w-full bg-black border border-gray-700 rounded-2xl px-5 py-4 outline-none focus:border-green-500">
+          </div>
+
+          <div>
+            <label class="block text-gray-400 mb-3">
+              Phone Number
+            </label>
+
+            <input
+              type="text"
+              value="+91 9876543210"
+              class="w-full bg-black border border-gray-700 rounded-2xl px-5 py-4 outline-none focus:border-green-500">
+          </div>
+
+          <div class="md:col-span-2">
+
+            <label class="block text-gray-400 mb-3">
+              Bio
+            </label>
+
+            <textarea
+              rows="4"
+              class="w-full bg-black border border-gray-700 rounded-2xl px-5 py-4 outline-none focus:border-green-500">Full Stack Developer & Expense Manager User</textarea>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- SECURITY -->
+    <section
+      class="bg-gray-900 border border-gray-800 rounded-3xl p-6 lg:p-8">
+
+      <div class="mb-8">
+
+        <h2 class="text-3xl font-bold">
+          Security Settings
+        </h2>
+
+        <p class="text-gray-400 mt-2">
+          Protect your account and login sessions
+        </p>
+
+      </div>
+
+      <div class="grid xl:grid-cols-2 gap-8">
+
+        <!-- PASSWORD -->
+        <div class="space-y-5">
+
+          <div>
+            <label class="block text-gray-400 mb-3">
+              Current Password
+            </label>
+
+            <input
+              type="password"
+              placeholder="Enter current password"
+              class="w-full bg-black border border-gray-700 rounded-2xl px-5 py-4">
+          </div>
+
+          <div>
+            <label class="block text-gray-400 mb-3">
+              New Password
+            </label>
+
+            <input
+              type="password"
+              placeholder="Enter new password"
+              class="w-full bg-black border border-gray-700 rounded-2xl px-5 py-4">
+          </div>
+
+          <div>
+            <label class="block text-gray-400 mb-3">
+              Confirm Password
+            </label>
+
+            <input
+              type="password"
+              placeholder="Confirm password"
+              class="w-full bg-black border border-gray-700 rounded-2xl px-5 py-4">
+          </div>
+
+          <button
+            class="bg-green-500 hover:bg-green-600 px-6 py-3 rounded-2xl font-semibold">
+
+            Update Password
+          </button>
+
+        </div>
+
+        <!-- TOGGLES -->
+        <div class="space-y-6">
+
+          <!-- 2FA -->
+          <div
+            class="flex items-center justify-between bg-black border border-gray-800 rounded-2xl p-5">
+
+            <div>
+
+              <h3 class="font-semibold text-lg">
+                Two Factor Authentication
+              </h3>
+
+              <p class="text-gray-400 text-sm mt-1">
+                Extra security for your account
+              </p>
+
+            </div>
+
+            <button
+              (click)="twoFactorAuth = !twoFactorAuth"
+              [ngClass]="twoFactorAuth ? 'bg-green-500' : 'bg-gray-700'"
+              class="w-16 h-9 rounded-full relative transition">
+
+                            <span
+                              [ngClass]="twoFactorAuth ? 'translate-x-8' : 'translate-x-1'"
+                              class="absolute top-1 left-0 bg-white w-7 h-7 rounded-full transition">
+
+                            </span>
+
+            </button>
+
+          </div>
+
+          <!-- SESSION -->
+          <div
+            class="bg-black border border-gray-800 rounded-2xl p-5">
+
+            <div
+              class="flex items-center justify-between mb-4">
+
+              <div>
+
+                <h3 class="font-semibold text-lg">
+                  Active Sessions
+                </h3>
+
+                <p class="text-gray-400 text-sm">
+                  Devices currently logged in
+                </p>
+
+              </div>
+
+              <button
+                class="bg-red-500 hover:bg-red-600 px-4 py-2 rounded-xl">
+
+                Logout All
+              </button>
+
+            </div>
+
+            <div class="space-y-4">
+
+              <div
+                class="flex items-center justify-between border-b border-gray-800 pb-4">
+
+                <div>
+
+                  <p class="font-medium">
+                    Chrome on Windows
+                  </p>
+
+                  <p class="text-gray-400 text-sm">
+                    Nagpur, India
+                  </p>
+
+                </div>
+
+                <span class="text-green-400">
+                                    Active
+                                </span>
+
+              </div>
+
+              <div
+                class="flex items-center justify-between">
+
+                <div>
+
+                  <p class="font-medium">
+                    Android Device
+                  </p>
+
+                  <p class="text-gray-400 text-sm">
+                    Mumbai, India
+                  </p>
+
+                </div>
+
+                <button
+                  class="text-red-400 hover:text-red-300">
+
+                  Remove
+                </button>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- NOTIFICATIONS -->
+    <section
+      class="bg-gray-900 border border-gray-800 rounded-3xl p-6 lg:p-8">
+
+      <div class="mb-8">
+
+        <h2 class="text-3xl font-bold">
+          Notification Preferences
+        </h2>
+
+        <p class="text-gray-400 mt-2">
+          Configure how you receive alerts and updates
+        </p>
+
+      </div>
+
+      <div class="space-y-5">
+
+        <!-- EMAIL -->
+        <div
+          class="flex items-center justify-between bg-black border border-gray-800 rounded-2xl p-5">
+
+          <div>
+
+            <h3 class="font-semibold text-lg">
+              Email Notifications
+            </h3>
+
+            <p class="text-gray-400 text-sm mt-1">
+              Receive account and expense updates
+            </p>
+
+          </div>
+
+          <button
+            (click)="emailNotifications = !emailNotifications"
+            [ngClass]="emailNotifications ? 'bg-green-500' : 'bg-gray-700'"
+            class="w-16 h-9 rounded-full relative transition">
+
+                        <span
+                          [ngClass]="emailNotifications ? 'translate-x-8' : 'translate-x-1'"
+                          class="absolute top-1 left-0 bg-white w-7 h-7 rounded-full transition">
+
+                        </span>
+
+          </button>
+
+        </div>
+
+        <!-- PUSH -->
+        <div
+          class="flex items-center justify-between bg-black border border-gray-800 rounded-2xl p-5">
+
+          <div>
+
+            <h3 class="font-semibold text-lg">
+              Push Notifications
+            </h3>
+
+            <p class="text-gray-400 text-sm mt-1">
+              Instant browser notifications
+            </p>
+
+          </div>
+
+          <button
+            (click)="pushNotifications = !pushNotifications"
+            [ngClass]="pushNotifications ? 'bg-green-500' : 'bg-gray-700'"
+            class="w-16 h-9 rounded-full relative transition">
+
+                        <span
+                          [ngClass]="pushNotifications ? 'translate-x-8' : 'translate-x-1'"
+                          class="absolute top-1 left-0 bg-white w-7 h-7 rounded-full transition">
+
+                        </span>
+
+          </button>
+
+        </div>
+
+        <!-- SMS -->
+        <div
+          class="flex items-center justify-between bg-black border border-gray-800 rounded-2xl p-5">
+
+          <div>
+
+            <h3 class="font-semibold text-lg">
+              SMS Alerts
+            </h3>
+
+            <p class="text-gray-400 text-sm mt-1">
+              Important payment alerts
+            </p>
+
+          </div>
+
+          <button
+            (click)="smsNotifications = !smsNotifications"
+            [ngClass]="smsNotifications ? 'bg-green-500' : 'bg-gray-700'"
+            class="w-16 h-9 rounded-full relative transition">
+
+                        <span
+                          [ngClass]="smsNotifications ? 'translate-x-8' : 'translate-x-1'"
+                          class="absolute top-1 left-0 bg-white w-7 h-7 rounded-full transition">
+
+                        </span>
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- APP PREFERENCES -->
+    <section
+      class="grid xl:grid-cols-2 gap-8">
+
+      <!-- APPEARANCE -->
+      <div
+        class="bg-gray-900 border border-gray-800 rounded-3xl p-6 lg:p-8">
+
+        <div class="mb-8">
+
+          <h2 class="text-3xl font-bold">
+            Appearance
+          </h2>
+
+          <p class="text-gray-400 mt-2">
+            Customize application UI
+          </p>
+
+        </div>
+
+        <div class="space-y-5">
+
+          <!-- DARK MODE -->
+          <div
+            class="flex items-center justify-between bg-black border border-gray-800 rounded-2xl p-5">
+
+            <div>
+
+              <h3 class="font-semibold">
+                Dark Mode
+              </h3>
+
+              <p class="text-gray-400 text-sm">
+                Enable dark theme
+              </p>
+
+            </div>
+
+            <button
+              (click)="darkMode = !darkMode"
+              [ngClass]="darkMode ? 'bg-green-500' : 'bg-gray-700'"
+              class="w-16 h-9 rounded-full relative transition">
+
+                            <span
+                              [ngClass]="darkMode ? 'translate-x-8' : 'translate-x-1'"
+                              class="absolute top-1 left-0 bg-white w-7 h-7 rounded-full transition">
+
+                            </span>
+
+            </button>
+
+          </div>
+
+          <!-- COMPACT -->
+          <div
+            class="flex items-center justify-between bg-black border border-gray-800 rounded-2xl p-5">
+
+            <div>
+
+              <h3 class="font-semibold">
+                Compact Layout
+              </h3>
+
+              <p class="text-gray-400 text-sm">
+                Reduce spacing and padding
+              </p>
+
+            </div>
+
+            <button
+              (click)="compactLayout = !compactLayout"
+              [ngClass]="compactLayout ? 'bg-green-500' : 'bg-gray-700'"
+              class="w-16 h-9 rounded-full relative transition">
+
+                            <span
+                              [ngClass]="compactLayout ? 'translate-x-8' : 'translate-x-1'"
+                              class="absolute top-1 left-0 bg-white w-7 h-7 rounded-full transition">
+
+                            </span>
+
+            </button>
+
+          </div>
+
+          <!-- LANGUAGE -->
+          <div>
+
+            <label class="block text-gray-400 mb-3">
+              Language
+            </label>
+
+            <select
+              class="w-full bg-black border border-gray-700 rounded-2xl px-5 py-4">
+
+              <option>English</option>
+              <option>Hindi</option>
+              <option>Marathi</option>
+
+            </select>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- EXPENSE PREFERENCES -->
+      <div
+        class="bg-gray-900 border border-gray-800 rounded-3xl p-6 lg:p-8">
+
+        <div class="mb-8">
+
+          <h2 class="text-3xl font-bold">
+            Expense Preferences
+          </h2>
+
+          <p class="text-gray-400 mt-2">
+            Configure financial settings
+          </p>
+
+        </div>
+
+        <div class="space-y-5">
+
+          <div>
+
+            <label class="block text-gray-400 mb-3">
+              Default Currency
+            </label>
+
+            <select
+              class="w-full bg-black border border-gray-700 rounded-2xl px-5 py-4">
+
+              <option>INR (₹)</option>
+              <option>USD ($)</option>
+              <option>EUR (€)</option>
+
+            </select>
+
+          </div>
+
+          <div>
+
+            <label class="block text-gray-400 mb-3">
+              Date Format
+            </label>
+
+            <select
+              class="w-full bg-black border border-gray-700 rounded-2xl px-5 py-4">
+
+              <option>DD/MM/YYYY</option>
+              <option>MM/DD/YYYY</option>
+
+            </select>
+
+          </div>
+
+          <div>
+
+            <label class="block text-gray-400 mb-3">
+              Monthly Budget
+            </label>
+
+            <input
+              type="number"
+              value="50000"
+              class="w-full bg-black border border-gray-700 rounded-2xl px-5 py-4">
+
+          </div>
+
+          <div>
+
+            <label class="block text-gray-400 mb-3">
+              Default Category
+            </label>
+
+            <select
+              class="w-full bg-black border border-gray-700 rounded-2xl px-5 py-4">
+
+              <option>Food</option>
+              <option>Travel</option>
+              <option>Shopping</option>
+
+            </select>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- PRIVACY -->
+    <section
+      class="bg-gray-900 border border-gray-800 rounded-3xl p-6 lg:p-8">
+
+      <div class="mb-8">
+
+        <h2 class="text-3xl font-bold">
+          Privacy & Data
+        </h2>
+
+        <p class="text-gray-400 mt-2">
+          Manage visibility and analytics preferences
+        </p>
+
+      </div>
+
+      <div class="space-y-5">
+
+        <!-- PROFILE -->
+        <div
+          class="flex items-center justify-between bg-black border border-gray-800 rounded-2xl p-5">
+
+          <div>
+
+            <h3 class="font-semibold">
+              Public Profile
+            </h3>
+
+            <p class="text-gray-400 text-sm">
+              Allow others to view your profile
+            </p>
+
+          </div>
+
+          <button
+            (click)="profilePublic = !profilePublic"
+            [ngClass]="profilePublic ? 'bg-green-500' : 'bg-gray-700'"
+            class="w-16 h-9 rounded-full relative transition">
+
+                        <span
+                          [ngClass]="profilePublic ? 'translate-x-8' : 'translate-x-1'"
+                          class="absolute top-1 left-0 bg-white w-7 h-7 rounded-full transition">
+
+                        </span>
+
+          </button>
+
+        </div>
+
+        <!-- ANALYTICS -->
+        <div
+          class="flex items-center justify-between bg-black border border-gray-800 rounded-2xl p-5">
+
+          <div>
+
+            <h3 class="font-semibold">
+              Analytics Tracking
+            </h3>
+
+            <p class="text-gray-400 text-sm">
+              Improve application experience
+            </p>
+
+          </div>
+
+          <button
+            (click)="analyticsTracking = !analyticsTracking"
+            [ngClass]="analyticsTracking ? 'bg-green-500' : 'bg-gray-700'"
+            class="w-16 h-9 rounded-full relative transition">
+
+                        <span
+                          [ngClass]="analyticsTracking ? 'translate-x-8' : 'translate-x-1'"
+                          class="absolute top-1 left-0 bg-white w-7 h-7 rounded-full transition">
+
+                        </span>
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- SYSTEM -->
+    <section
+      class="bg-gray-900 border border-gray-800 rounded-3xl p-6 lg:p-8">
+
+      <div class="mb-8">
+
+        <h2 class="text-3xl font-bold">
+          System Configuration
+        </h2>
+
+        <p class="text-gray-400 mt-2">
+          Backup, sync and application configuration
+        </p>
+
+      </div>
+
+      <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-5">
+
+        <button
+          class="bg-black border border-gray-800 hover:border-green-500 rounded-2xl p-6 text-left transition">
+
+          <div class="text-4xl mb-5">
+            💾
+          </div>
+
+          <h3 class="text-xl font-semibold mb-2">
+            Backup Data
+          </h3>
+
+          <p class="text-gray-400">
+            Export all expense records
+          </p>
+
+        </button>
+
+        <button
+          class="bg-black border border-gray-800 hover:border-green-500 rounded-2xl p-6 text-left transition">
+
+          <div class="text-4xl mb-5">
+            🔄
+          </div>
+
+          <h3 class="text-xl font-semibold mb-2">
+            Sync Database
+          </h3>
+
+          <p class="text-gray-400">
+            Synchronize application data
+          </p>
+
+        </button>
+
+        <button
+          class="bg-black border border-gray-800 hover:border-green-500 rounded-2xl p-6 text-left transition">
+
+          <div class="text-4xl mb-5">
+            🧹
+          </div>
+
+          <h3 class="text-xl font-semibold mb-2">
+            Clear Cache
+          </h3>
+
+          <p class="text-gray-400">
+            Remove temporary data
+          </p>
+
+        </button>
+
+        <button
+          class="bg-black border border-gray-800 hover:border-green-500 rounded-2xl p-6 text-left transition">
+
+          <div class="text-4xl mb-5">
+            📥
+          </div>
+
+          <h3 class="text-xl font-semibold mb-2">
+            Import Data
+          </h3>
+
+          <p class="text-gray-400">
+            Upload previous records
+          </p>
+
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- DANGER ZONE -->
+    <section
+      class="bg-red-500/10 border border-red-500/30 rounded-3xl p-6 lg:p-8">
+
+      <div class="mb-8">
+
+        <h2 class="text-3xl font-bold text-red-400">
+          Danger Zone
+        </h2>
+
+        <p class="text-gray-400 mt-2">
+          Permanent and sensitive actions
+        </p>
+
+      </div>
+
+      <div class="flex flex-col lg:flex-row gap-5">
+
+        <button
+          class="bg-red-500 hover:bg-red-600 px-6 py-4 rounded-2xl font-semibold">
+
+          Delete Account
+        </button>
+
+        <button
+          class="bg-black border border-red-500/40 hover:border-red-500 px-6 py-4 rounded-2xl">
+
+          Reset Settings
+        </button>
+
+        <button
+          class="bg-black border border-red-500/40 hover:border-red-500 px-6 py-4 rounded-2xl">
+
+          Logout All Devices
+        </button>
+
+      </div>
+
+    </section>
+
+  </div>
+
+</div>

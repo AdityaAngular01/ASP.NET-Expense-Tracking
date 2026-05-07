@@ -1,0 +1,472 @@
+<div class="min-h-screen bg-black text-white">
+
+  <!-- HEADER -->
+  <header
+    class="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-6 p-8 border-b border-gray-800">
+
+    <div>
+      <h1 class="text-5xl font-bold">
+        Group Management
+      </h1>
+
+      <p class="text-gray-400 mt-3 text-lg">
+        Manage shared expenses and settlements
+      </p>
+    </div>
+
+    <div class="flex gap-4">
+
+      <button
+        class="bg-gray-900 hover:bg-gray-800 border border-gray-800 px-6 py-3 rounded-2xl transition">
+
+        Export Groups
+      </button>
+
+      <button
+        class="bg-green-500 hover:bg-green-600 px-6 py-3 rounded-2xl font-semibold transition">
+
+        + Create Group
+      </button>
+
+    </div>
+
+  </header>
+
+  <!-- CONTENT -->
+  <div class="p-8 space-y-10">
+
+    <!-- STATS -->
+    <section class="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+
+      <!-- CARD -->
+      <div
+        class="bg-gradient-to-br from-green-500 to-emerald-600 rounded-3xl p-6">
+
+        <p class="text-white/80">
+          Total Groups
+        </p>
+
+        <h2 class="text-5xl font-bold mt-4">
+          12
+        </h2>
+
+        <p class="mt-4 text-white/90">
+          3 new this month
+        </p>
+
+      </div>
+
+      <!-- CARD -->
+      <div
+        class="bg-gray-900 border border-gray-800 rounded-3xl p-6">
+
+        <p class="text-gray-400">
+          Shared Expenses
+        </p>
+
+        <h2 class="text-5xl font-bold mt-4">
+          ₹86K
+        </h2>
+
+        <p class="mt-4 text-blue-400">
+          Across all groups
+        </p>
+
+      </div>
+
+      <!-- CARD -->
+      <div
+        class="bg-gray-900 border border-gray-800 rounded-3xl p-6">
+
+        <p class="text-gray-400">
+          Pending Settlements
+        </p>
+
+        <h2 class="text-5xl font-bold mt-4">
+          ₹9.9K
+        </h2>
+
+        <p class="mt-4 text-yellow-400">
+          14 pending payments
+        </p>
+
+      </div>
+
+      <!-- CARD -->
+      <div
+        class="bg-gray-900 border border-gray-800 rounded-3xl p-6">
+
+        <p class="text-gray-400">
+          Active Members
+        </p>
+
+        <h2 class="text-5xl font-bold mt-4">
+          34
+        </h2>
+
+        <p class="mt-4 text-purple-400">
+          Participating users
+        </p>
+
+      </div>
+
+    </section>
+
+    <!-- FILTERS -->
+    <section
+      class="bg-gray-900 border border-gray-800 rounded-3xl p-6">
+
+      <div class="grid lg:grid-cols-5 gap-5">
+
+        <!-- Search -->
+        <input
+          type="text"
+          placeholder="Search groups..."
+          class="bg-black border border-gray-700 rounded-2xl px-5 py-4 outline-none focus:border-green-500">
+
+        <!-- Category -->
+        <select
+          class="bg-black border border-gray-700 rounded-2xl px-5 py-4 outline-none">
+
+          <option>All Categories</option>
+          <option>Travel</option>
+          <option>Food</option>
+          <option>Living</option>
+
+        </select>
+
+        <!-- Status -->
+        <select
+          class="bg-black border border-gray-700 rounded-2xl px-5 py-4 outline-none">
+
+          <option>All Status</option>
+          <option>Active</option>
+          <option>Pending</option>
+          <option>Settled</option>
+
+        </select>
+
+        <!-- Members -->
+        <select
+          class="bg-black border border-gray-700 rounded-2xl px-5 py-4 outline-none">
+
+          <option>All Members</option>
+          <option>2-5 Members</option>
+          <option>5-10 Members</option>
+
+        </select>
+
+        <!-- Button -->
+        <button
+          class="bg-green-500 hover:bg-green-600 rounded-2xl font-semibold transition">
+
+          Apply Filters
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- GROUP CARDS -->
+    <section class="grid xl:grid-cols-2 gap-8">
+
+      <div
+        *ngFor="let group of groups"
+        class="bg-gray-900 border border-gray-800 rounded-3xl overflow-hidden hover:border-green-500/40 transition">
+
+        <!-- TOP -->
+        <div class="p-8 border-b border-gray-800">
+
+          <div
+            class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-5">
+
+            <!-- LEFT -->
+            <div>
+
+              <div class="flex items-center gap-4 mb-4">
+
+                <div
+                  class="w-16 h-16 rounded-2xl bg-green-500/20 flex items-center justify-center text-3xl">
+
+                  👥
+                </div>
+
+                <div>
+
+                  <h2 class="text-3xl font-bold">
+                    {{ group.name }}
+                  </h2>
+
+                  <p class="text-gray-400 mt-1">
+                    {{ group.description }}
+                  </p>
+
+                </div>
+
+              </div>
+
+              <!-- MEMBERS -->
+              <div class="flex flex-wrap gap-3 mt-6">
+
+                                <span
+                                  *ngFor="let member of group.members"
+                                  class="bg-black border border-gray-700 px-4 py-2 rounded-full text-sm">
+
+                                    {{ member }}
+                                </span>
+
+              </div>
+
+            </div>
+
+            <!-- STATUS -->
+            <div>
+
+                            <span
+                              [ngClass]="{
+                                    'bg-green-500/20 text-green-400': group.status === 'Active',
+                                    'bg-yellow-500/20 text-yellow-400': group.status === 'Pending',
+                                    'bg-blue-500/20 text-blue-400': group.status === 'Settled'
+                                }"
+                              class="px-5 py-3 rounded-full text-sm font-semibold">
+
+                                {{ group.status }}
+                            </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- STATS -->
+        <div class="p-8">
+
+          <div class="grid md:grid-cols-3 gap-5 mb-8">
+
+            <!-- Total -->
+            <div
+              class="bg-black border border-gray-800 rounded-2xl p-5">
+
+              <p class="text-gray-400 text-sm">
+                Total Expense
+              </p>
+
+              <h3
+                class="text-3xl font-bold text-green-400 mt-3">
+
+                ₹{{ group.totalExpense }}
+              </h3>
+
+            </div>
+
+            <!-- Pending -->
+            <div
+              class="bg-black border border-gray-800 rounded-2xl p-5">
+
+              <p class="text-gray-400 text-sm">
+                Pending
+              </p>
+
+              <h3
+                class="text-3xl font-bold text-yellow-400 mt-3">
+
+                ₹{{ group.pendingAmount }}
+              </h3>
+
+            </div>
+
+            <!-- Members -->
+            <div
+              class="bg-black border border-gray-800 rounded-2xl p-5">
+
+              <p class="text-gray-400 text-sm">
+                Members
+              </p>
+
+              <h3
+                class="text-3xl font-bold text-blue-400 mt-3">
+
+                {{ group.members.length }}
+              </h3>
+
+            </div>
+
+          </div>
+
+          <!-- DETAILS -->
+          <div class="space-y-4 mb-8">
+
+            <div
+              class="flex items-center justify-between border-b border-gray-800 pb-4">
+
+                            <span class="text-gray-400">
+                                Created By
+                            </span>
+
+              <span class="font-semibold">
+                                {{ group.createdBy }}
+                            </span>
+
+            </div>
+
+            <div
+              class="flex items-center justify-between border-b border-gray-800 pb-4">
+
+                            <span class="text-gray-400">
+                                Category
+                            </span>
+
+              <span class="font-semibold">
+                                {{ group.category }}
+                            </span>
+
+            </div>
+
+            <div
+              class="flex items-center justify-between border-b border-gray-800 pb-4">
+
+                            <span class="text-gray-400">
+                                Created At
+                            </span>
+
+              <span class="font-semibold">
+                                {{ group.createdAt }}
+                            </span>
+
+            </div>
+
+          </div>
+
+          <!-- ACTIVITY -->
+          <div
+            class="bg-black border border-gray-800 rounded-2xl p-5 mb-8">
+
+            <p class="text-gray-400 text-sm mb-3">
+              Recent Activity
+            </p>
+
+            <p class="font-medium">
+              {{ group.recentActivity }}
+            </p>
+
+          </div>
+
+          <!-- ACTIONS -->
+          <div class="flex flex-wrap gap-4">
+
+            <button
+              class="flex-1 bg-green-500 hover:bg-green-600 py-4 rounded-2xl font-semibold transition">
+
+              View Details
+            </button>
+
+            <button
+              class="flex-1 bg-gray-800 hover:bg-gray-700 py-4 rounded-2xl transition">
+
+              Add Expense
+            </button>
+
+            <button
+              class="bg-black border border-gray-700 hover:border-green-500 px-6 rounded-2xl transition">
+
+              Edit
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- RECENT ACTIVITY -->
+    <section
+      class="bg-gray-900 border border-gray-800 rounded-3xl p-8">
+
+      <div class="mb-8">
+
+        <h2 class="text-3xl font-bold">
+          Recent Group Activities
+        </h2>
+
+        <p class="text-gray-400 mt-2">
+          Latest actions across all groups
+        </p>
+
+      </div>
+
+      <div class="space-y-5">
+
+        <!-- ITEM -->
+        <div
+          class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 bg-black border border-gray-800 rounded-2xl p-5">
+
+          <div class="flex items-center gap-5">
+
+            <div
+              class="w-14 h-14 rounded-2xl bg-green-500/20 flex items-center justify-center text-2xl">
+
+              💰
+            </div>
+
+            <div>
+
+              <h3 class="font-semibold text-lg">
+                Rahul added Hotel Expense
+              </h3>
+
+              <p class="text-gray-400">
+                Goa Trip 2026
+              </p>
+
+            </div>
+
+          </div>
+
+          <p class="text-gray-500">
+            2 hours ago
+          </p>
+
+        </div>
+
+        <!-- ITEM -->
+        <div
+          class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 bg-black border border-gray-800 rounded-2xl p-5">
+
+          <div class="flex items-center gap-5">
+
+            <div
+              class="w-14 h-14 rounded-2xl bg-blue-500/20 flex items-center justify-center text-2xl">
+
+              🧾
+            </div>
+
+            <div>
+
+              <h3 class="font-semibold text-lg">
+                Sneha settled payment
+              </h3>
+
+              <p class="text-gray-400">
+                Office Team Lunch
+              </p>
+
+            </div>
+
+          </div>
+
+          <p class="text-gray-500">
+            5 hours ago
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </div>
+
+</div>

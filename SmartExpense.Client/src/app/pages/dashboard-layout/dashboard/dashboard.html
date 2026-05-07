@@ -1,0 +1,341 @@
+  <!-- TOPBAR -->
+  <header
+    class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5 p-8 border-b border-gray-800">
+
+    <div>
+      <h1 class="text-4xl font-bold">
+        Expense Dashboard
+      </h1>
+
+      <p class="text-gray-400 mt-2">
+        Track and manage your financial activity
+      </p>
+    </div>
+
+    <div class="flex gap-4">
+
+      <button
+        class="bg-gray-900 hover:bg-gray-800 px-5 py-3 rounded-2xl border border-gray-800 transition">
+
+        Export Report
+      </button>
+
+      <button
+        class="bg-green-500 hover:bg-green-600 px-5 py-3 rounded-2xl font-semibold transition">
+
+        + Add Expense
+      </button>
+
+    </div>
+
+  </header>
+
+  <!-- CONTENT -->
+  <div class="p-8 space-y-10">
+
+    <!-- SUMMARY CARDS -->
+    <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+
+      <!-- Card -->
+      <div
+        class="bg-gray-900 border border-gray-800 rounded-3xl p-6">
+
+        <p class="text-gray-400">
+          Total Expenses
+        </p>
+
+        <h2 class="text-4xl font-bold mt-3">
+          ₹48,520
+        </h2>
+
+        <p class="text-green-400 mt-3">
+          +12% this month
+        </p>
+
+      </div>
+
+      <!-- Card -->
+      <div
+        class="bg-gray-900 border border-gray-800 rounded-3xl p-6">
+
+        <p class="text-gray-400">
+          Group Expenses
+        </p>
+
+        <h2 class="text-4xl font-bold mt-3">
+          ₹18,900
+        </h2>
+
+        <p class="text-blue-400 mt-3">
+          5 active groups
+        </p>
+
+      </div>
+
+      <!-- Card -->
+      <div
+        class="bg-gray-900 border border-gray-800 rounded-3xl p-6">
+
+        <p class="text-gray-400">
+          Pending Splits
+        </p>
+
+        <h2 class="text-4xl font-bold mt-3">
+          ₹7,800
+        </h2>
+
+        <p class="text-yellow-400 mt-3">
+          12 unsettled payments
+        </p>
+
+      </div>
+
+      <!-- Card -->
+      <div
+        class="bg-gray-900 border border-gray-800 rounded-3xl p-6">
+
+        <p class="text-gray-400">
+          Categories
+        </p>
+
+        <h2 class="text-4xl font-bold mt-3">
+          14
+        </h2>
+
+        <p class="text-purple-400 mt-3">
+          Active categories
+        </p>
+
+      </div>
+
+    </div>
+
+    <!-- QUICK ACTIONS -->
+    <section>
+
+      <div class="flex items-center justify-between mb-6">
+
+        <h2 class="text-2xl font-bold">
+          Quick Actions
+        </h2>
+
+      </div>
+
+      <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+
+        <button
+          class="bg-gray-900 hover:bg-gray-800 border border-gray-800 p-6 rounded-3xl text-left transition">
+
+          <div class="text-5xl mb-5">💰</div>
+
+          <h3 class="text-xl font-semibold mb-2">
+            Add Expense
+          </h3>
+
+          <p class="text-gray-400">
+            Create a new expense entry
+          </p>
+
+        </button>
+
+        <button
+          class="bg-gray-900 hover:bg-gray-800 border border-gray-800 p-6 rounded-3xl text-left transition">
+
+          <div class="text-5xl mb-5">👥</div>
+
+          <h3 class="text-xl font-semibold mb-2">
+            Create Group
+          </h3>
+
+          <p class="text-gray-400">
+            Start tracking shared expenses
+          </p>
+
+        </button>
+
+        <button
+          class="bg-gray-900 hover:bg-gray-800 border border-gray-800 p-6 rounded-3xl text-left transition">
+
+          <div class="text-5xl mb-5">🧾</div>
+
+          <h3 class="text-xl font-semibold mb-2">
+            Settle Payment
+          </h3>
+
+          <p class="text-gray-400">
+            Mark pending splits as settled
+          </p>
+
+        </button>
+
+        <button
+          class="bg-gray-900 hover:bg-gray-800 border border-gray-800 p-6 rounded-3xl text-left transition">
+
+          <div class="text-5xl mb-5">📊</div>
+
+          <h3 class="text-xl font-semibold mb-2">
+            Analytics
+          </h3>
+
+          <p class="text-gray-400">
+            View spending reports
+          </p>
+
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- RECENT EXPENSES -->
+    <section
+      class="bg-gray-900 border border-gray-800 rounded-3xl p-8">
+
+      <div
+        class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5 mb-8">
+
+        <div>
+          <h2 class="text-3xl font-bold">
+            Recent Expenses
+          </h2>
+
+          <p class="text-gray-400 mt-2">
+            Latest tracked expenses
+          </p>
+        </div>
+
+        <button
+          class="bg-green-500 hover:bg-green-600 px-5 py-3 rounded-2xl font-semibold transition">
+
+          View All
+        </button>
+
+      </div>
+
+      <!-- TABLE -->
+      <div class="overflow-x-auto">
+
+        <table class="w-full">
+
+          <thead>
+
+          <tr class="border-b border-gray-800 text-left">
+
+            <th class="pb-5">Title</th>
+            <th class="pb-5">Category</th>
+            <th class="pb-5">Group</th>
+            <th class="pb-5">Amount</th>
+            <th class="pb-5">Date</th>
+            <th class="pb-5">Status</th>
+
+          </tr>
+
+          </thead>
+
+          <tbody class="divide-y divide-gray-800">
+
+          <tr class="hover:bg-gray-800/40 transition">
+
+            <td class="py-5">
+              Dinner Expense
+            </td>
+
+            <td class="py-5">
+              Food
+            </td>
+
+            <td class="py-5">
+              Friends Group
+            </td>
+
+            <td class="py-5 text-green-400 font-semibold">
+              ₹2,400
+            </td>
+
+            <td class="py-5">
+              07 May 2026
+            </td>
+
+            <td class="py-5">
+                                    <span
+                                      class="bg-yellow-500/20 text-yellow-400 px-4 py-2 rounded-full text-sm">
+
+                                        Pending
+                                    </span>
+            </td>
+
+          </tr>
+
+          <tr class="hover:bg-gray-800/40 transition">
+
+            <td class="py-5">
+              Goa Trip
+            </td>
+
+            <td class="py-5">
+              Travel
+            </td>
+
+            <td class="py-5">
+              Goa Group
+            </td>
+
+            <td class="py-5 text-green-400 font-semibold">
+              ₹12,000
+            </td>
+
+            <td class="py-5">
+              05 May 2026
+            </td>
+
+            <td class="py-5">
+                                    <span
+                                      class="bg-green-500/20 text-green-400 px-4 py-2 rounded-full text-sm">
+
+                                        Settled
+                                    </span>
+            </td>
+
+          </tr>
+
+          <tr class="hover:bg-gray-800/40 transition">
+
+            <td class="py-5">
+              Netflix Subscription
+            </td>
+
+            <td class="py-5">
+              Entertainment
+            </td>
+
+            <td class="py-5">
+              Personal
+            </td>
+
+            <td class="py-5 text-green-400 font-semibold">
+              ₹799
+            </td>
+
+            <td class="py-5">
+              03 May 2026
+            </td>
+
+            <td class="py-5">
+                                    <span
+                                      class="bg-green-500/20 text-green-400 px-4 py-2 rounded-full text-sm">
+
+                                        Paid
+                                    </span>
+            </td>
+
+          </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </section>
+
+  </div>

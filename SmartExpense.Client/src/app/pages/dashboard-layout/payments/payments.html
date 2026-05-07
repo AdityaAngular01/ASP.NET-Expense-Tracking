@@ -1,0 +1,450 @@
+<div class="min-h-screen bg-black text-white">
+
+  <!-- HEADER -->
+  <header
+    class="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-6 p-6 lg:p-8 border-b border-gray-800">
+
+    <div>
+      <h1 class="text-4xl lg:text-5xl font-bold">
+        Payments & Settlements
+      </h1>
+
+      <p class="text-gray-400 mt-3 text-base lg:text-lg">
+        Track settlements, payments and pending balances
+      </p>
+    </div>
+
+    <div class="flex flex-col sm:flex-row gap-4">
+
+      <button
+        class="bg-gray-900 hover:bg-gray-800 border border-gray-800 px-6 py-3 rounded-2xl transition">
+
+        Export Report
+      </button>
+
+      <button
+        class="bg-green-500 hover:bg-green-600 px-6 py-3 rounded-2xl font-semibold transition">
+
+        + New Payment
+      </button>
+
+    </div>
+
+  </header>
+
+  <!-- PAGE CONTENT -->
+  <div class="p-6 lg:p-8 space-y-10">
+
+    <!-- ANALYTICS -->
+    <section class="grid sm:grid-cols-2 xl:grid-cols-4 gap-6">
+
+      <!-- CARD -->
+      <div
+        class="bg-gradient-to-br from-green-500 to-emerald-600 rounded-3xl p-6">
+
+        <p class="text-white/80">
+          Total Settlements
+        </p>
+
+        <h2 class="text-4xl lg:text-5xl font-bold mt-4">
+          ₹92K
+        </h2>
+
+        <p class="mt-4 text-white/90">
+          +18% from last month
+        </p>
+
+      </div>
+
+      <!-- CARD -->
+      <div
+        class="bg-gray-900 border border-gray-800 rounded-3xl p-6">
+
+        <p class="text-gray-400">
+          Pending Payments
+        </p>
+
+        <h2 class="text-4xl lg:text-5xl font-bold mt-4">
+          ₹9.7K
+        </h2>
+
+        <p class="mt-4 text-yellow-400">
+          14 pending transactions
+        </p>
+
+      </div>
+
+      <!-- CARD -->
+      <div
+        class="bg-gray-900 border border-gray-800 rounded-3xl p-6">
+
+        <p class="text-gray-400">
+          Successful Payments
+        </p>
+
+        <h2 class="text-4xl lg:text-5xl font-bold mt-4">
+          128
+        </h2>
+
+        <p class="mt-4 text-green-400">
+          Completed transactions
+        </p>
+
+      </div>
+
+      <!-- CARD -->
+      <div
+        class="bg-gray-900 border border-gray-800 rounded-3xl p-6">
+
+        <p class="text-gray-400">
+          Failed Transactions
+        </p>
+
+        <h2 class="text-4xl lg:text-5xl font-bold mt-4">
+          4
+        </h2>
+
+        <p class="mt-4 text-red-400">
+          Requires attention
+        </p>
+
+      </div>
+
+    </section>
+
+    <!-- FILTERS -->
+    <section
+      class="bg-gray-900 border border-gray-800 rounded-3xl p-6">
+
+      <div class="grid lg:grid-cols-5 gap-5">
+
+        <!-- Search -->
+        <input
+          type="text"
+          placeholder="Search payments..."
+          class="bg-black border border-gray-700 rounded-2xl px-5 py-4 outline-none focus:border-green-500">
+
+        <!-- Method -->
+        <select
+          class="bg-black border border-gray-700 rounded-2xl px-5 py-4">
+
+          <option>All Methods</option>
+          <option>UPI</option>
+          <option>Cash</option>
+          <option>Bank Transfer</option>
+
+        </select>
+
+        <!-- Status -->
+        <select
+          class="bg-black border border-gray-700 rounded-2xl px-5 py-4">
+
+          <option>All Status</option>
+          <option>Completed</option>
+          <option>Pending</option>
+          <option>Failed</option>
+
+        </select>
+
+        <!-- Groups -->
+        <select
+          class="bg-black border border-gray-700 rounded-2xl px-5 py-4">
+
+          <option>All Groups</option>
+          <option>Goa Trip</option>
+          <option>Office Lunch</option>
+          <option>Flat Expenses</option>
+
+        </select>
+
+        <!-- Filter -->
+        <button
+          class="bg-green-500 hover:bg-green-600 rounded-2xl font-semibold transition">
+
+          Apply Filters
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- MOBILE CARDS -->
+    <section class="lg:hidden space-y-5">
+
+      <div
+        *ngFor="let payment of payments"
+        class="bg-gray-900 border border-gray-800 rounded-3xl p-5">
+
+        <!-- TOP -->
+        <div class="flex items-start justify-between gap-4 mb-5">
+
+          <div>
+
+            <h2 class="text-xl font-bold">
+              {{ payment.group }}
+            </h2>
+
+            <p class="text-gray-400 mt-1">
+              {{ payment.id }}
+            </p>
+
+          </div>
+
+          <span
+            [ngClass]="{
+                            'bg-green-500/20 text-green-400': payment.status === 'Completed',
+                            'bg-yellow-500/20 text-yellow-400': payment.status === 'Pending',
+                            'bg-red-500/20 text-red-400': payment.status === 'Failed'
+                        }"
+            class="px-4 py-2 rounded-full text-sm">
+
+                        {{ payment.status }}
+                    </span>
+
+        </div>
+
+        <!-- DETAILS -->
+        <div class="space-y-4">
+
+          <div class="flex justify-between">
+            <span class="text-gray-400">Paid By</span>
+            <span>{{ payment.paidBy }}</span>
+          </div>
+
+          <div class="flex justify-between">
+            <span class="text-gray-400">Paid To</span>
+            <span>{{ payment.paidTo }}</span>
+          </div>
+
+          <div class="flex justify-between">
+            <span class="text-gray-400">Method</span>
+            <span>{{ payment.method }}</span>
+          </div>
+
+          <div class="flex justify-between">
+            <span class="text-gray-400">Date</span>
+            <span>{{ payment.date }}</span>
+          </div>
+
+        </div>
+
+        <!-- AMOUNT -->
+        <div
+          class="mt-6 flex items-center justify-between border-t border-gray-800 pt-5">
+
+          <h3 class="text-3xl font-bold text-green-400">
+            ₹{{ payment.amount }}
+          </h3>
+
+          <button
+            class="bg-green-500 hover:bg-green-600 px-5 py-3 rounded-xl">
+
+            View
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- DESKTOP TABLE -->
+    <section
+      class="hidden lg:block bg-gray-900 border border-gray-800 rounded-3xl overflow-hidden">
+
+      <!-- TABLE HEADER -->
+      <div
+        class="flex items-center justify-between p-8 border-b border-gray-800">
+
+        <div>
+
+          <h2 class="text-3xl font-bold">
+            Payment Transactions
+          </h2>
+
+          <p class="text-gray-400 mt-2">
+            Detailed transaction records
+          </p>
+
+        </div>
+
+        <button
+          class="bg-gray-800 hover:bg-gray-700 px-5 py-3 rounded-2xl transition">
+
+          Download Report
+        </button>
+
+      </div>
+
+      <!-- TABLE -->
+      <div class="overflow-x-auto">
+
+        <table class="w-full min-w-[1200px]">
+
+          <thead class="bg-black/30">
+
+          <tr class="border-b border-gray-800 text-left">
+
+            <th class="px-8 py-5">Payment ID</th>
+            <th class="px-8 py-5">Paid By</th>
+            <th class="px-8 py-5">Paid To</th>
+            <th class="px-8 py-5">Group</th>
+            <th class="px-8 py-5">Method</th>
+            <th class="px-8 py-5">Amount</th>
+            <th class="px-8 py-5">Date</th>
+            <th class="px-8 py-5">Status</th>
+            <th class="px-8 py-5">Actions</th>
+
+          </tr>
+
+          </thead>
+
+          <tbody class="divide-y divide-gray-800">
+
+          <tr
+            *ngFor="let payment of payments"
+            class="hover:bg-gray-800/40 transition">
+
+            <!-- Payment ID -->
+            <td class="px-8 py-6">
+
+              <div>
+
+                <h3 class="font-semibold">
+                  {{ payment.id }}
+                </h3>
+
+                <p class="text-gray-400 text-sm mt-1">
+                  {{ payment.transactionId }}
+                </p>
+
+              </div>
+
+            </td>
+
+            <!-- Paid By -->
+            <td class="px-8 py-6">
+              {{ payment.paidBy }}
+            </td>
+
+            <!-- Paid To -->
+            <td class="px-8 py-6">
+              {{ payment.paidTo }}
+            </td>
+
+            <!-- Group -->
+            <td class="px-8 py-6">
+              {{ payment.group }}
+            </td>
+
+            <!-- Method -->
+            <td class="px-8 py-6">
+
+                                <span
+                                  class="bg-blue-500/20 text-blue-400 px-4 py-2 rounded-full text-sm">
+
+                                    {{ payment.method }}
+                                </span>
+
+            </td>
+
+            <!-- Amount -->
+            <td
+              class="px-8 py-6 text-green-400 font-bold text-lg">
+
+              ₹{{ payment.amount }}
+            </td>
+
+            <!-- Date -->
+            <td class="px-8 py-6 text-gray-400">
+              {{ payment.date }}
+            </td>
+
+            <!-- Status -->
+            <td class="px-8 py-6">
+
+                                <span
+                                  [ngClass]="{
+                                        'bg-green-500/20 text-green-400': payment.status === 'Completed',
+                                        'bg-yellow-500/20 text-yellow-400': payment.status === 'Pending',
+                                        'bg-red-500/20 text-red-400': payment.status === 'Failed'
+                                    }"
+                                  class="px-4 py-2 rounded-full text-sm">
+
+                                    {{ payment.status }}
+                                </span>
+
+            </td>
+
+            <!-- ACTIONS -->
+            <td class="px-8 py-6">
+
+              <div class="flex gap-3">
+
+                <button
+                  class="bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-xl transition">
+
+                  View
+                </button>
+
+                <button
+                  class="bg-green-500 hover:bg-green-600 px-4 py-2 rounded-xl transition">
+
+                  Receipt
+                </button>
+
+              </div>
+
+            </td>
+
+          </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+      <!-- PAGINATION -->
+      <div
+        class="flex items-center justify-between p-8 border-t border-gray-800">
+
+        <p class="text-gray-400">
+          Showing 1 to 4 of 48 transactions
+        </p>
+
+        <div class="flex gap-3">
+
+          <button
+            class="bg-gray-800 hover:bg-gray-700 px-5 py-3 rounded-xl">
+
+            Previous
+          </button>
+
+          <button
+            class="bg-green-500 px-5 py-3 rounded-xl font-semibold">
+
+            1
+          </button>
+
+          <button
+            class="bg-gray-800 hover:bg-gray-700 px-5 py-3 rounded-xl">
+
+            2
+          </button>
+
+          <button
+            class="bg-gray-800 hover:bg-gray-700 px-5 py-3 rounded-xl">
+
+            Next
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </div>
+
+</div>
